@@ -10,3 +10,33 @@ body,
   color: #fff;
   background-color: black;
 }
+
+.pinkButton {
+  width: 96px;
+  height: 31px;
+  background-color: #e10098;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.pinkButton:hover {
+  background-color: #e1009ad5;
+}
+
+.blackButtonLang {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 113px;
+  height: 31px;
+  background-color: #000;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid #e10098;
+  border-radius: 10px;
+  cursor: pointer;
+}

@@ -1,18 +1,32 @@
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #000000;
-}
-
-.lang {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  margin: 25px 99px 45px 99px;
 }
 
 .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.logoImg {
   height: 44px;
   width: 44px;
+}
+.title {
+  color: #e10098;
+  font-size: 25px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
 }

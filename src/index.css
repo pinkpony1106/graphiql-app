@@ -7,4 +7,6 @@ body,
   margin: 0;
   font-family: 'Lato', Verdana, Geneva, Tahoma, sans-serif;
   position: absolute;
+  color: #fff;
+  background-color: black;
 }

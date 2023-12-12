@@ -1,20 +1,14 @@
-import { Box, Typography } from '@mui/material';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import RoutingApp from './Services/routing';
 
 function App() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        alignItems: 'center',
-        padding: '30px',
-      }}
-    >
-      <Typography variant="h2" component="h1" gutterBottom>
-        Hello world!
-      </Typography>
-    </Box>
+    <>
+      <Header />
+      <RoutingApp />
+      <Footer />
+    </>
   );
 }
 

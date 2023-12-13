@@ -1,4 +1,4 @@
-import { add } from '../tets';
+import { add } from '../tests';
 
 describe('Math functions', () => {
   it('should add two numbers correctly', () => {

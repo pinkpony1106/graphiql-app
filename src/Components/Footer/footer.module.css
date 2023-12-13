@@ -1,0 +1,40 @@
+.container {
+  background-image: url('src/assets/background-footer.svg');
+}
+.footer {
+  height: 170px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 99px 0 99px;
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 7px;
+}
+
+.graphqlDocs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.label {
+  font-weight: 600;
+  font-size: 20px;
+}
+a .text {
+  font-size: 17px;
+  color: #fff;
+  text-decoration: underline black;
+  cursor: pointer;
+}
+a .text:hover {
+  font-size: 17px;
+  color: #e10098;
+  text-decoration: underline black;
+  cursor: pointer;
+}

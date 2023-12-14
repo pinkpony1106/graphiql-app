@@ -12,7 +12,7 @@ function SignIn() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ resolver: yupResolver(schema) as any });
+  } = useForm<IFormInput>({ resolver: yupResolver(schema) });
 
 
   const onSubmit = async (data: IFormInput) => {

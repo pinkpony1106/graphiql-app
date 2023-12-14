@@ -12,7 +12,7 @@ function SignUp() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ resolver: yupResolver(schema) as any });
+  } = useForm<IFormInput>({ resolver: yupResolver(schema) });
 
   const onSubmit = (data: IFormInput) => {
     const { name, email, password } = data;

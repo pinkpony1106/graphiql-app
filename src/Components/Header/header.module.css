@@ -1,10 +1,22 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #000;
+}
+.wrapper.scroll {
+  position: fixed;
+  animation: slideDown 0.5s ease-out;
+}
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #000000;
-  margin: 25px 99px 45px 99px;
+  margin: 25px 99px 25px 99px;
 }
 
 .logo {
@@ -29,4 +41,13 @@
   align-items: center;
   gap: 15px;
   cursor: pointer;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

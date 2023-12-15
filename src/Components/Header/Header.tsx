@@ -26,7 +26,7 @@ function Header() {
 
   return (
     <div
-      className={classNames(styles.wrapper, {
+      className={classNames(styles.header, {
         [styles.scroll]: animatedHeader,
       })}
     >

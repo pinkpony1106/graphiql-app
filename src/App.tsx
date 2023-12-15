@@ -1,12 +1,25 @@
-import Footer from './Components/Footer/Footer';
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './Pages/MainPage/MainPage';
+import SignIn from './Components/SignIn/SignIn';
+import SignUp from './Components/SignUp/SignUp';
+import GraphlPage from './Pages/GraphlPage/GraphlPage';
 import Header from './Components/Header/Header';
-import RoutingApp from './Services/routing';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
     <>
       <Header />
-      <RoutingApp />
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/graph-ql" element={<GraphlPage />} />
+          <Route path="*" element={<p>not found</p>} />
+        </Routes>
+      </main>
+
       <Footer />
     </>
   );

@@ -40,3 +40,7 @@ body,
   border-radius: 10px;
   cursor: pointer;
 }
+
+.main {
+  padding: 100px 100px 30px;
+}

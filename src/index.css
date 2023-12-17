@@ -12,6 +12,10 @@ body,
 }
 
 .pinkButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 96px;
   height: 31px;
   background-color: #e10098;
@@ -20,6 +24,7 @@ body,
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  text-decoration: none;
 }
 .pinkButton:hover {
   background-color: #e1009ad5;

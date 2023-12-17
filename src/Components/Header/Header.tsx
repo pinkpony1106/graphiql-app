@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './header.module.css';
 import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header() {
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [animatedHeader, setAnimatedHeader] = useState(false);
 
@@ -31,40 +30,24 @@ function Header() {
       })}
     >
       <div className={styles.container}>
-        <div
-          className={styles.logo}
-          onClick={() => {
-            navigate(`/graph-ql`);
-          }}
-        >
-          <img className={styles.logoImg} src="src/assets/graphql-logo.svg" />
+        <Link to={'/graph-ql'} className={styles.logo}>
+          <img
+            className={styles.logoImg}
+            src="src/assets/graphql-logo.svg"
+            alt="Graphql logo"
+          />
           <div className={styles.title}>GraphQL</div>
-        </div>
+        </Link>
         <div className={styles.nav}>
-          <div
-            className={styles.home}
-            onClick={() => {
-              navigate(`/`);
-            }}
-          >
+          <Link to={'/'} className={styles.home}>
             Home
-          </div>
-          <button
-            className="pinkButton"
-            onClick={() => {
-              navigate(`/signIn`);
-            }}
-          >
+          </Link>
+          <Link to={'/signIn'} className="pinkButton">
             Sign In
-          </button>
-          <button
-            className="pinkButton"
-            onClick={() => {
-              navigate(`/signUp`);
-            }}
-          >
+          </Link>
+          <Link to={'/signUp'} className="pinkButton">
             Sign Up
-          </button>
+          </Link>
 
           <button className="blackButtonLang" onClick={handleOpen}>
             {open ? (

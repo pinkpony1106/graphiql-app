@@ -25,6 +25,7 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  text-decoration: none;
 }
 .logoImg {
   height: 44px;
@@ -34,7 +35,11 @@
   color: #e10098;
   font-size: 25px;
 }
-
+.home {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+}
 .nav {
   display: flex;
   flex-direction: row;

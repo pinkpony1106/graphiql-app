@@ -24,7 +24,7 @@ function Header() {
   }, []);
 
   return (
-    <div
+    <header
       className={classNames(styles.header, {
         [styles.scroll]: animatedHeader,
       })}
@@ -64,7 +64,7 @@ function Header() {
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

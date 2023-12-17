@@ -1,5 +1,19 @@
 import style from './aboutGraphi.module.css';
 
+const requestCode = `{
+  hero {
+    name
+    height
+  }
+}`;
+
+const responseCode = `{
+  "hero": {
+    "name": "Luke Skywalker",
+    "height": 1.72
+  }
+}`;
+
 function AboutGraphi() {
   return (
     <div className={style.container}>
@@ -14,28 +28,10 @@ function AboutGraphi() {
       <div className={style.exampleContainer}>
         <div className={style.exampleCodeContainer}>
           <div className={style.exampleCode}>
-            <pre>
-              &#123;{'\n'}
-              hero &#123;{'\n'}
-              <span className={style.select}>name</span>
-              {'\n'}
-              <span className={style.select}>height</span>
-              {'\n'}
-              &#125;{'\n'}
-              &#125;{'\n'}
-            </pre>
+            <pre>{requestCode}</pre>
           </div>
           <div className={style.exampleCode}>
-            <pre>
-              &#123;{'\n'}
-              &quot;hero&quot;: &#123;{'\n'}
-              &quot;name&quot;: &quot;
-              <span className={style.select}>Luke Skywalker</span>&quot;,{'\n'}
-              &quot;height&quot;: <span className={style.select}>1.72</span>
-              {'\n'}
-              &#125;{'\n'}
-              &#125;{'\n'}
-            </pre>
+            <pre>{responseCode}</pre>
           </div>
         </div>
         <div className={style.exampleCodeText}>

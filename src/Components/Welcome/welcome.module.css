@@ -1,8 +1,12 @@
 .welcomeContainer {
   height: 92vh;
   width: 100vw;
-  background-image: url('../../../public/welcomeIcons/background\ home.svg');
+  background-image: image-set(
+    url('./welcomeIcons/welcomeBg.png') 1x,
+    url('./welcomeIcons/welcomeBg@2x.png') 2x
+  );
   background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +24,7 @@
   padding: 35px 25px;
   border-radius: 20px;
   font-size: 17px;
-  width: 280px;
+  width: 300px;
 }
 
 .exampleHeader {
@@ -32,7 +36,7 @@
   height: 120px;
   background-repeat: no-repeat;
   margin: 0 100px;
-  background-image: url('../../../public/welcomeIcons/graphql-icon\ 2.svg');
+  background-image: url('./welcomeIcons/graphql-icon\ 2.svg');
 }
 
 .button {
@@ -58,7 +62,7 @@
     height: 120px;
     background-repeat: no-repeat;
     margin: 0 100px;
-    background-image: url('../../../public/welcomeIcons/graphql-icon\ 2.svg');
+    background-image: url('./welcomeIcons/graphql-icon\ 2.svg');
   }
   .welcomeLogo {
     display: none;

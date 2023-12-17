@@ -6,7 +6,7 @@ function AboutCourse() {
       <div className={style.header}>About the course</div>
       <div className={style.text}>
         RS School is free-of-charge and community-based education program
-        conducted by The Rolling Scopes developer communitysince 2013.
+        conducted by The Rolling Scopes developer community since 2013.
       </div>
       <div className={style.toolsContainer}>
         <div className={style.toolImage}>

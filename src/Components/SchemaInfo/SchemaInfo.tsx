@@ -1,3 +1,7 @@
+import style from './schemaInfo.module.css';
+
 export default function SchemaInfo() {
-  return <>Please find the docs here!</>;
+  return (
+    <div className={style.responseContainer}>Please find the docs here!</div>
+  );
 }

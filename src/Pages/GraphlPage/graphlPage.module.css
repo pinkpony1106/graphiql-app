@@ -7,7 +7,10 @@
   color: #ffffff;
   width: 100%;
   min-height: 95vh;
-  background-image: url('./requestIcons/background sign.svg');
+  background-image: image-set(
+    url('./requestIcons/requestBg.png') 1x,
+    url('./requestIcons/requestBg@2x.png') 2x
+  );
   box-sizing: border-box;
   padding: 15px;
   justify-content: space-between;
@@ -25,7 +28,8 @@
   cursor: pointer;
   position: absolute;
   top: 50%;
-  left: 95%;
+  left: -2%;
+  user-select: none;
 }
 
 .button:hover {

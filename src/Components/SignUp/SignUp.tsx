@@ -1,11 +1,9 @@
-import { useForm } from "react-hook-form";
-import { IFormInput } from "../../Interfaces/IForms";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "../../Shared/validation";
+import { useForm } from 'react-hook-form';
+import { IFormInput } from '../../Interfaces/IForms';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from '../../Shared/validation';
 import styles from './sign.module.css';
-import {
-  registerWithEmailAndPassword,
-} from "../../Shared/firebase";
+import { registerWithEmailAndPassword } from '../../Shared/firebase';
 
 function SignUp() {
   const {
@@ -24,34 +22,40 @@ function SignUp() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className={styles.title}>Sign Up</h4>
         <div className={styles.field}>
-          <input placeholder="Your Name" {...register("name", { required: true })} />
+          <input
+            placeholder="Your Name"
+            {...register('name', { required: true })}
+          />
         </div>
-        {errors.name && <p>{errors.name.message}</p>}
+        {errors.name ? <p>{errors.name.message}</p> : null}
 
         <div className={styles.field}>
-          <input placeholder="Email" {...register("email", { required: true })} />
+          <input
+            placeholder="Email"
+            {...register('email', { required: true })}
+          />
         </div>
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email ? <p>{errors.email.message}</p> : null}
 
         <div className={styles.field}>
           <input
             placeholder="Password"
             type="password"
-            {...register("password", { required: "Password is required" })}
+            {...register('password', { required: 'Password is required' })}
           />
         </div>
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password ? <p>{errors.password.message}</p> : null}
 
-        <div className={styles.field} >
+        <div className={styles.field}>
           <input
             placeholder="Password Again"
             type="password"
-            {...register("againPassword", {
-              required: "Confirm Password is required",
+            {...register('againPassword', {
+              required: 'Confirm Password is required',
             })}
           />
         </div>
-        {errors.againPassword && <p>{errors.againPassword.message}</p>}
+        {errors.againPassword ? <p>{errors.againPassword.message}</p> : null}
         <div className={styles.submit}>
           <button type="submit">Sign Up</button>
         </div>
@@ -61,7 +65,7 @@ function SignUp() {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 export default SignUp;

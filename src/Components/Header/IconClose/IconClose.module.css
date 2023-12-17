@@ -1,0 +1,26 @@
+.iconClose {
+  position: relative;
+  display: none;
+  width: 25px;
+  height: 25px;
+}
+.iconClose:before,
+.iconClose:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 25px;
+  background-color: #e10098;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: top left;
+  content: '';
+}
+.iconClose:after {
+  transform: rotate(-45deg) translate(-50%, -50%);
+}
+@media (max-width: 700px) {
+  .iconClose {
+    display: flex;
+  }
+}

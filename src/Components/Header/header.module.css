@@ -1,14 +1,17 @@
 .header {
-  position: absolute;
+  position: sticky;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 1);
+  padding: 25px 0;
 }
 .header.scroll {
-  position: fixed;
-  animation: slideDown 0.5s ease-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  padding: 10px 0;
+  animation: scrollMenu 0.2s ease-in-out;
 }
 
 .container {
@@ -16,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 25px 100px;
+  padding: 0 100px;
 }
 
 .logo {
@@ -40,19 +43,49 @@
   color: #fff;
   font-size: 17px;
 }
-.nav {
+.navDesktop {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 15px;
   cursor: pointer;
 }
+.navMobile {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-@keyframes slideDown {
+@keyframes scrollMenu {
   from {
-    transform: translateY(-100%);
+    background-color: rgba(0, 0, 0, 1);
+    backdrop-filter: blur(0);
+    padding: 25px 0;
   }
   to {
-    transform: translateY(0);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navDesktop {
+    display: none;
+  }
+  .navMobile {
+    display: flex;
+  }
+  .container {
+    padding: 0 15px;
   }
 }

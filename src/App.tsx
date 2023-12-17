@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import MainPage from './Pages/MainPage/MainPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Typography variant="h2" component="h1" gutterBottom>
         Hello world!
       </Typography>
+      <MainPage />
     </Box>
   );
 }

@@ -7,4 +7,51 @@ body,
   margin: 0;
   font-family: 'Lato', Verdana, Geneva, Tahoma, sans-serif;
   position: absolute;
+  color: #fff;
+  background-color: black;
+}
+
+.pinkButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 31px;
+  background-color: #e10098;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.pinkButton:hover {
+  background-color: #e1009ad5;
+}
+
+.blackButtonLang {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 113px;
+  height: 31px;
+  background-color: #000;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid #e10098;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.main {
+  padding: 30px 100px;
+}
+
+@media (max-width: 800px) {
+  .main {
+    padding: 30px 50px;
+  }
 }

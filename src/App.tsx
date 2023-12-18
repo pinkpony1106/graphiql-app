@@ -1,20 +1,27 @@
-import { Box, Typography } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './Pages/MainPage/MainPage';
+import SignIn from './Components/SignIn/SignIn';
+import SignUp from './Components/SignUp/SignUp';
+import GraphlPage from './Pages/GraphlPage/GraphlPage';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        alignItems: 'center',
-        padding: '30px',
-      }}
-    >
-      <Typography variant="h2" component="h1" gutterBottom>
-        Hello world!
-      </Typography>
-    </Box>
+    <>
+      <Header />
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/graph-ql" element={<GraphlPage />} />
+          <Route path="*" element={<p>not found</p>} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </>
   );
 }
 

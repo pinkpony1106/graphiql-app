@@ -1,0 +1,77 @@
+.container {
+  margin: 100px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+}
+
+.header {
+  margin-bottom: 30px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.developerInfoContainer {
+  display: flex;
+  background-color: rgba(129, 129, 129, 0.24);
+  border-radius: 20px;
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.developerInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 30px 15px 0;
+  font-size: 18px;
+}
+
+.developerImage {
+  margin-right: 30px;
+}
+
+.developerInfoHeader {
+  color: #e10098;
+  margin-bottom: 15px;
+}
+
+.developerInfoText {
+  margin-bottom: 15px;
+}
+
+.link {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    margin: 100px 50px;
+  }
+  .developerInfoContainer {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .developerImage {
+    margin-right: 0px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+  }
+
+  .developerInfo {
+    margin: 30px 15px;
+  }
+}

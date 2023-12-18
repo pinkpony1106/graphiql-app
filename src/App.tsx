@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material';
-import GraphlPage from './Pages/GraphlPage/GraphlPage';
 
 function App() {
   return (
@@ -9,12 +8,12 @@ function App() {
         flexDirection: 'column',
         width: '100%',
         alignItems: 'center',
+        padding: '30px',
       }}
     >
       <Typography variant="h2" component="h1" gutterBottom>
         Hello world!
       </Typography>
-      <GraphlPage />
     </Box>
   );
 }

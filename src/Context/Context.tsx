@@ -69,7 +69,7 @@ export const TranslateContextProvider: FC<PropsWithChildren> = ({
   );
 
   return (
-    <TranslateContext.Provider value={[t, setLang, lang] as const}>
+    <TranslateContext.Provider value={[t, setLang, lang]}>
       {children}
     </TranslateContext.Provider>
   );

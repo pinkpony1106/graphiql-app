@@ -9,13 +9,10 @@ import {
 } from 'react';
 import { ELangs, languages } from '../Locales/LanguagesConstants';
 
-export const TranslateContext = createContext<
-  [
-    (key: keyof typeof tKeys) => string,
-    Dispatch<SetStateAction<ELangs>>,
-    ELangs,
-  ]
->(null!);
+export const TranslateContext = createContext<{
+  t: (key: keyof typeof tKeys) => string;
+  setLang: Dispatch<SetStateAction<ELangs>>;
+}>(null!);
 
 export const tKeys = {
   to_graphiql: 'to_graphiql',
@@ -69,7 +66,7 @@ export const TranslateContextProvider: FC<PropsWithChildren> = ({
   );
 
   return (
-    <TranslateContext.Provider value={[t, setLang, lang]}>
+    <TranslateContext.Provider value={{ t, setLang }}>
       {children}
     </TranslateContext.Provider>
   );

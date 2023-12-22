@@ -17,7 +17,7 @@ const responseCode = `{
 }`;
 
 function AboutGraphi() {
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   return (
     <div className={style.container}>
       <div className={style.header}>{t(tKeys.a_query_lng)}</div>

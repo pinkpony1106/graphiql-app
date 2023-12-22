@@ -15,7 +15,7 @@ const responseCode = `{
 }`;
 
 export default function Welcome() {
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   return (
     <div className={style.welcomeContainer}>
       <div className={style.welcomeExampleContainer}>

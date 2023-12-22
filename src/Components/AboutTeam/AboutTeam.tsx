@@ -3,7 +3,7 @@ import style from './aboutTeam.module.css';
 import { TranslateContext, tKeys } from '../../Context/Context';
 
 function AboutTeam() {
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   return (
     <div className={style.container}>
       <div className={style.header}>{t(tKeys.about_team)}</div>

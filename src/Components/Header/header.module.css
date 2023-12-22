@@ -58,6 +58,37 @@
   cursor: pointer;
   margin-top: 10px;
 }
+.pinkButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 20px;
+  background-color: #e10098;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.pinkButton:hover {
+  background-color: #e1009ad5;
+}
+
+.blackButtonLang {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #000;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid #e10098;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 @keyframes scrollMenu {
   from {

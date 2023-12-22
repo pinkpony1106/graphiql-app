@@ -4,8 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../../Shared/validation';
 import styles from './sign.module.css';
 import { registerWithEmailAndPassword } from '../../Shared/firebase';
+import { useContext } from 'react';
+import { TranslateContext, tKeys } from '../../Context/Context';
 
 function SignUp() {
+  const [t] = useContext(TranslateContext);
+  // const schema = useValidationSchema();
   const {
     register,
     handleSubmit,
@@ -20,10 +24,10 @@ function SignUp() {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h4 className={styles.title}>Sign Up</h4>
+        <h4 className={styles.title}>{t(tKeys.signUp)}</h4>
         <div className={styles.field}>
           <input
-            placeholder="Your Name"
+            placeholder={t(tKeys.name)}
             {...register('name', { required: true })}
           />
         </div>
@@ -31,7 +35,7 @@ function SignUp() {
 
         <div className={styles.field}>
           <input
-            placeholder="Email"
+            placeholder={t(tKeys.email)}
             {...register('email', { required: true })}
           />
         </div>
@@ -39,7 +43,7 @@ function SignUp() {
 
         <div className={styles.field}>
           <input
-            placeholder="Password"
+            placeholder={t(tKeys.password)}
             type="password"
             {...register('password', { required: 'Password is required' })}
           />
@@ -48,7 +52,7 @@ function SignUp() {
 
         <div className={styles.field}>
           <input
-            placeholder="Password Again"
+            placeholder={t(tKeys.password_again)}
             type="password"
             {...register('againPassword', {
               required: 'Confirm Password is required',
@@ -57,11 +61,11 @@ function SignUp() {
         </div>
         {errors.againPassword ? <p>{errors.againPassword.message}</p> : null}
         <div className={styles.submit}>
-          <button type="submit">Sign Up</button>
+          <button type="submit">{t(tKeys.signUp)}</button>
         </div>
         <div className={styles.registered}>
-          <p>Already registered?</p>
-          <p className={styles.sign}>Sign In</p>
+          <p>{t(tKeys.registered)}</p>
+          <p className={styles.sign}>{t(tKeys.signIn)}</p>
         </div>
       </form>
     </div>

@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import style from './welcome.module.css';
+import { TranslateContext, tKeys } from '../../Context/Context';
 
 const requestCode = `{
   project(name: "GraphQL") {
@@ -13,20 +15,21 @@ const responseCode = `{
 }`;
 
 export default function Welcome() {
+  const [t] = useContext(TranslateContext);
   return (
     <div className={style.welcomeContainer}>
       <div className={style.welcomeExampleContainer}>
         <div className={style.welcomeExample}>
-          <div className={style.exampleHeader}>Ask for what you want</div>
+          <div className={style.exampleHeader}>{t(tKeys.ask_for)}</div>
           <pre className={style.exampleText}>{requestCode}</pre>
         </div>
         <div className={style.welcomeLogo}></div>
         <div className={style.welcomeExample}>
-          <div className={style.exampleHeader}>Get predictable results</div>
+          <div className={style.exampleHeader}>{t(tKeys.get_results)}</div>
           <pre className={style.exampleText}>{responseCode}</pre>
         </div>
       </div>
-      <div className={style.button}>Get Started</div>
+      <div className={style.button}>{t(tKeys.get_started)}</div>
       <div className={style.welcomeLogoVertical}></div>
     </div>
   );

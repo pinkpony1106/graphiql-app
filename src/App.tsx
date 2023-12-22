@@ -5,10 +5,11 @@ import SignUp from './Components/SignUp/SignUp';
 import GraphlPage from './Pages/GraphlPage/GraphlPage';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import { TranslateContextProvider } from './Context/Context';
 
 function App() {
   return (
-    <>
+    <TranslateContextProvider>
       <Header />
       <main className="main">
         <Routes>
@@ -19,9 +20,8 @@ function App() {
           <Route path="*" element={<p>not found</p>} />
         </Routes>
       </main>
-
       <Footer />
-    </>
+    </TranslateContextProvider>
   );
 }
 

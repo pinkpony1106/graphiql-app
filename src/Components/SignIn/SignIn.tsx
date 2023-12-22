@@ -2,8 +2,11 @@ import { useForm } from 'react-hook-form';
 import { IFormInput } from '../../Interfaces/IForms';
 import styles from '../SignUp/sign.module.css';
 import { logInWithEmailAndPassword } from '../../Shared/firebase';
+import { useContext } from 'react';
+import { TranslateContext, tKeys } from '../../Context/Context';
 
 function SignIn() {
+  const [t] = useContext(TranslateContext);
   const {
     register,
     handleSubmit,
@@ -24,11 +27,11 @@ function SignIn() {
   return (
     <div className={styles.container}>
       <form>
-        <h4 className={styles.title}>Sign In</h4>
+        <h4 className={styles.title}>{t(tKeys.signIn)}</h4>
 
         <div className={styles.field}>
           <input
-            placeholder="Email"
+            placeholder={t(tKeys.email)}
             {...register('email', { required: 'Email is required' })}
           />
         </div>
@@ -36,7 +39,7 @@ function SignIn() {
 
         <div className={styles.field}>
           <input
-            placeholder="Password"
+            placeholder={t(tKeys.password)}
             type="password"
             {...register('password', { required: 'Password is required' })}
           />
@@ -45,13 +48,13 @@ function SignIn() {
 
         <div className={styles.submit}>
           <button type="button" onClick={() => handleSubmit(onSubmit)()}>
-            Sign In
+            {t(tKeys.signIn)}
           </button>
         </div>
 
         <div className={styles.registered}>
-          <p>Don&apos;t Have an Account Yet?</p>
-          <p className={styles.sign}>Sign Up</p>
+          <p>{t(tKeys.have_an_account)}</p>
+          <p className={styles.sign}>{t(tKeys.signUp)}</p>
         </div>
       </form>
     </div>

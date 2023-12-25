@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
 
 function Footer() {
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   return (
     <footer className={styles.footer}>
       <div className={styles.contacts}>

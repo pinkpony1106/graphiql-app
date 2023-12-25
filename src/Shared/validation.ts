@@ -65,7 +65,7 @@ export const schema = yup.object().shape({
 //       ''
 //     >
 //   >();
-//   const [t] = useContext(TranslateContext);
+//   const {t} = useContext(TranslateContext);
 
 //   const schemaObject = yup.object().shape({
 //     name: yup

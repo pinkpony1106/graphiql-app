@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import style from './welcome.module.css';
 import { TranslateContext, tKeys } from '../../Context/Context';
+import { Link } from 'react-router-dom';
 
 const requestCode = `{
   project(name: "GraphQL") {
@@ -29,7 +30,10 @@ export default function Welcome() {
           <pre className={style.exampleText}>{responseCode}</pre>
         </div>
       </div>
-      <div className={style.button}>{t(tKeys.get_started)}</div>
+      <Link to={'/graph-ql'}>
+        <div className={style.button}>{t(tKeys.get_started)}</div>
+      </Link>
+
       <div className={style.welcomeLogoVertical}></div>
     </div>
   );

@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
 
 function SignIn() {
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   const {
     register,
     handleSubmit,

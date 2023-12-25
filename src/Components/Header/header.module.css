@@ -83,11 +83,21 @@
   align-items: center;
   gap: 10px;
   background-color: #000;
+  padding: 1px;
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
   border: 1px solid #e10098;
   border-radius: 10px;
   cursor: pointer;
+}
+.blackButtonLang div {
+  padding: 3px;
+}
+.langActive {
+  background-color: #e10098;
+  padding: 3px;
+  color: #000;
+  border-radius: 8px;
 }
 
 @keyframes scrollMenu {

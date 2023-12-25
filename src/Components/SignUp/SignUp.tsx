@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
 
 function SignUp() {
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   // const schema = useValidationSchema();
   const {
     register,

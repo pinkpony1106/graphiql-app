@@ -7,7 +7,7 @@ import { TranslateContext, tKeys } from '../../Context/Context';
 
 function GraphlPage() {
   const [schemaVisible, setSchemaVisible] = useState(false);
-  const [t] = useContext(TranslateContext);
+  const { t } = useContext(TranslateContext);
   return (
     <div className={style.container}>
       {schemaVisible ? <SchemaInfo /> : null}

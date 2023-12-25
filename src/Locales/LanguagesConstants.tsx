@@ -1,7 +1,7 @@
 export enum ELangs {
   en = 'EN',
   ru = 'RU',
-  bel = 'BEL',
+  bel = 'BLR',
 }
 export const languages = {
   [ELangs.en]: {
@@ -96,7 +96,7 @@ export const languages = {
     schemaInfo: 'Пожалуйста, найдите документы здесь!',
     emailRequired: 'Пожалуйста, введите электронную почту!',
     passwordRequired: 'Пожалуйста, введите пароль!',
-    docs: 'Документация',
+    docs: 'Доки',
     contacts: 'Контакты',
     tania: 'Татьяна Кулинкович',
     anna: 'Анна Двор',
@@ -146,7 +146,7 @@ export const languages = {
     schemaInfo: 'Калі ласка, знайдзіце дакументы тут!',
     emailRequired: 'Калі ласка, увядзіце электронную пошту!',
     passwordRequired: 'Калі ласка, увядзіце пароль!',
-    docs: 'Дакументацыя',
+    docs: 'Дoкі',
     contacts: 'Кантакты',
     tania: 'Таццяна Кулінковіч',
     anna: 'Ганна Двор',

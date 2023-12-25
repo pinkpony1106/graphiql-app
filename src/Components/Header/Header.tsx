@@ -10,7 +10,7 @@ import { ELangs } from '../../Locales/LanguagesConstants';
 function Header() {
   const [animatedHeader, setAnimatedHeader] = useState(false);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
-  const [t, setLang] = useContext(TranslateContext);
+  const { t, setLang, lang } = useContext(TranslateContext);
 
   useEffect(() => {
     const headerListener = () => {
@@ -26,21 +26,12 @@ function Header() {
 
   useEffect(() => {
     const storedData = localStorage.getItem('currentLanguage');
-    if (storedData === 'en') {
-      setLang(ELangs.en);
-    } else {
-      setLang(ELangs.ru);
-    }
+    setLang(storedData as ELangs);
   }, [setLang]);
 
-  const handleToEnLang = () => {
-    setLang(ELangs.en);
-    localStorage.setItem('currentLanguage', 'en');
-  };
-
-  const handleToRuLang = () => {
-    setLang(ELangs.ru);
-    localStorage.setItem('currentLanguage', 'rus');
+  const handleLang = (language: ELangs) => {
+    setLang(language);
+    localStorage.setItem('currentLanguage', language);
   };
 
   return (
@@ -69,11 +60,29 @@ function Header() {
             {t(tKeys.signUp)}
           </Link>
           <button className={styles.blackButtonLang}>
-            <div className={styles.en} onClick={handleToEnLang}>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.en,
+              })}
+              onClick={() => handleLang(ELangs.en)}
+            >
               EN
             </div>
-            <div className={styles.ru} onClick={handleToRuLang}>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.ru,
+              })}
+              onClick={() => handleLang(ELangs.ru)}
+            >
               RU
+            </div>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.bel,
+              })}
+              onClick={() => handleLang(ELangs.bel)}
+            >
+              BLR
             </div>
           </button>
         </div>
@@ -96,8 +105,30 @@ function Header() {
               {t(tKeys.signUp)}
             </Link>
             <button className={styles.blackButtonLang}>
-              <div className={styles.en}>EN</div>
-              <div className={styles.ru}>RU</div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.en,
+                })}
+                onClick={() => handleLang(ELangs.en)}
+              >
+                EN
+              </div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.ru,
+                })}
+                onClick={() => handleLang(ELangs.ru)}
+              >
+                RU
+              </div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.bel,
+                })}
+                onClick={() => handleLang(ELangs.bel)}
+              >
+                BLR
+              </div>
             </button>
           </div>
         </div>

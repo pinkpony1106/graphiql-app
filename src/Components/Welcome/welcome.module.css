@@ -49,6 +49,7 @@
   margin: 40px;
   transition: 0.1s ease-in;
   cursor: pointer;
+  text-decoration: underline black;
 }
 
 .button:hover {

@@ -12,6 +12,7 @@ import { ELangs, languages } from '../Locales/LanguagesConstants';
 export const TranslateContext = createContext<{
   t: (key: keyof typeof tKeys) => string;
   setLang: Dispatch<SetStateAction<ELangs>>;
+  lang: ELangs;
 }>(null!);
 
 export const tKeys = {
@@ -66,7 +67,7 @@ export const TranslateContextProvider: FC<PropsWithChildren> = ({
   );
 
   return (
-    <TranslateContext.Provider value={{ t, setLang }}>
+    <TranslateContext.Provider value={{ t, setLang, lang }}>
       {children}
     </TranslateContext.Provider>
   );

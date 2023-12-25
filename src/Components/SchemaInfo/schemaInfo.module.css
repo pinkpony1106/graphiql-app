@@ -5,8 +5,52 @@
   padding: 35px 25px;
   border-radius: 20px;
   font-size: 20px;
-  flex-basis: 40%;
+  min-width: 25%;
   flex-grow: 1;
   margin: 15px;
   transition: 1s ease-in-out;
+}
+
+.title {
+  font-size: 25px;
+  color: #e10098;
+  margin: 0px;
+}
+
+.titleSchema {
+  font-size: 20px;
+  color: #e10098;
+  margin: 0px;
+}
+
+.containerTypes {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.kind {
+  color: #e10098;
+  margin-left: 5px;
+}
+
+.schemaInformation {
+  display: flex;
+  gap: 50px;
+  margin-top: 25px;
+}
+
+.detailContainer {
+  display: flex;
+  gap: 50px;
+}
+
+.typeContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.description {
+  margin-top: 20px;
 }

@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 1);
   padding: 25px 0;
 }
+
 .header.scroll {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
@@ -30,19 +31,23 @@
   cursor: pointer;
   text-decoration: none;
 }
+
 .logoImg {
   height: 44px;
   width: 44px;
 }
+
 .title {
   color: #e10098;
   font-size: 25px;
 }
+
 .home {
   text-decoration: none;
   color: #fff;
   font-size: 17px;
 }
+
 .navDesktop {
   display: flex;
   flex-direction: row;
@@ -50,6 +55,7 @@
   gap: 15px;
   cursor: pointer;
 }
+
 .navMobile {
   display: none;
   flex-direction: column;
@@ -59,12 +65,26 @@
   margin-top: 10px;
 }
 
+.authButtonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.authButtonsBurger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
 @keyframes scrollMenu {
   from {
     background-color: rgba(0, 0, 0, 1);
     backdrop-filter: blur(0);
     padding: 25px 0;
   }
+
   to {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(2px);
@@ -82,9 +102,11 @@
   .navDesktop {
     display: none;
   }
+
   .navMobile {
     display: flex;
   }
+
   .container {
     padding: 0 15px;
   }

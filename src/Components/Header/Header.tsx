@@ -4,11 +4,23 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import IconClose from './IconClose/IconClose';
 import IconBurger from './IconBurger/IconBurger';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../Shared/firebase';
+import LogOut from '../LogOut/LogOut';
 
 function Header() {
   const [openLanguage, setOpenLanguage] = useState(false);
   const [animatedHeader, setAnimatedHeader] = useState(false);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(!!auth.currentUser);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setLoggedIn(!!user);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleOpenLanguage = () => {
     setOpenLanguage(!openLanguage);
@@ -33,7 +45,7 @@ function Header() {
       })}
     >
       <div className={styles.container}>
-        <Link to={'/graph-ql'} className={styles.logo}>
+        <Link to={'/'} className={styles.logo}>
           <img
             className={styles.logoImg}
             src="src/assets/graphql-logo.svg"
@@ -45,12 +57,23 @@ function Header() {
           <Link to={'/'} className={styles.home}>
             Home
           </Link>
-          <Link to={'/signIn'} className="pinkButton">
-            Sign In
-          </Link>
-          <Link to={'/signUp'} className="pinkButton">
-            Sign Up
-          </Link>
+          {isLoggedIn ? (
+            <div className={styles.authButtonsContainer}>
+              <Link className={styles.home} to={'/graph-ql'}>
+                Main Page
+              </Link>
+              <LogOut />
+            </div>
+          ) : (
+            <div className={styles.authButtonsContainer}>
+              <Link to={'/signIn'} className="pinkButton">
+                Sign In
+              </Link>
+              <Link to={'/signUp'} className="pinkButton">
+                Sign Up
+              </Link>
+            </div>
+          )}
 
           <button className="blackButtonLang" onClick={handleOpenLanguage}>
             {openLanguage ? (
@@ -79,12 +102,23 @@ function Header() {
             <Link to={'/'} className={styles.home}>
               Home
             </Link>
-            <Link to={'/signIn'} className="pinkButton">
-              Sign In
-            </Link>
-            <Link to={'/signUp'} className="pinkButton">
-              Sign Up
-            </Link>
+            {isLoggedIn ? (
+              <div className={styles.authButtonsBurger}>
+                <Link className={styles.home} to={'/graph-ql'}>
+                  Main Page
+                </Link>
+                <LogOut />
+              </div>
+            ) : (
+              <div>
+                <Link to={'/signIn'} className="pinkButton">
+                  Sign In
+                </Link>
+                <Link to={'/signUp'} className="pinkButton">
+                  Sign Up
+                </Link>
+              </div>
+            )}
 
             <button className="blackButtonLang" onClick={handleOpenLanguage}>
               {openLanguage ? (

@@ -3,11 +3,23 @@ import { ISchemaProps, ISchemaType } from './SchemaTypes';
 import SchemaField from './SchemaField';
 import styles from './SchemaInfo.module.css';
 
-const SchemaInfo: FC<ISchemaProps> = ({ types }) => {
+interface ISchemaInfoProps extends ISchemaProps {
+  selectedField: string | null;
+  onFieldClick: (fieldName: string) => void;
+}
+
+const SchemaInfo: FC<ISchemaInfoProps> = ({
+  types,
+  selectedField,
+  onFieldClick,
+}) => {
   const [selectedType, setSelectedType] = useState<ISchemaType | null>(null);
+  const [activeFieldIndex, setActiveFieldIndex] = useState<number | null>(null);
 
   const handleTypeClick = (type: ISchemaType) => {
     setSelectedType(type);
+    setActiveFieldIndex(null);
+    onFieldClick(type.name);
   };
 
   return (
@@ -16,7 +28,8 @@ const SchemaInfo: FC<ISchemaProps> = ({ types }) => {
         <h2 className={styles.titleSchema}>Queries</h2>
         {types?.map((type) => (
           <div
-            className={styles.containerTypes}
+            className={`${styles.containerTypes} ${selectedField === type.name ? styles.active : ''
+              }`}
             key={type.name}
             onClick={() => handleTypeClick(type)}
           >
@@ -30,6 +43,8 @@ const SchemaInfo: FC<ISchemaProps> = ({ types }) => {
           name={''}
           kind={''}
           description={''}
+          activeFieldIndex={activeFieldIndex}
+          setActiveFieldIndex={setActiveFieldIndex}
         />
       )}
     </div>

@@ -33,18 +33,12 @@ function SignUp() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className={styles.title}>Sign Up</h4>
         <div className={styles.field}>
-          <input
-            placeholder="Your Name"
-            {...register('name')}
-          />
+          <input placeholder="Your Name" {...register('name')} />
         </div>
         {errors.name ? <p>{errors.name.message}</p> : null}
 
         <div className={styles.field}>
-          <input
-            placeholder="Email"
-            {...register('email')}
-          />
+          <input placeholder="Email" {...register('email')} />
         </div>
         {errors.email ? <p>{errors.email.message}</p> : null}
 

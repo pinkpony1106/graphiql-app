@@ -14,14 +14,12 @@ export interface ISchemaField {
 }
 
 export interface ISchemaFieldProps {
-  data: ISchemaField[];
-  onFieldClick: (item: ISchemaField) => void;
-}
-
-export interface ISchemaFieldDetailed {
-  field?: ISchemaField;
-  type: ISchemaType;
-  onFieldClick: (item: ISchemaField) => void;
+  fields: ISchemaField[];
+  name: string;
+  kind: string;
+  description: string;
+  activeFieldIndex: number | null;
+  setActiveFieldIndex: (index: number | null) => void;
 }
 
 export interface ISchemaProps {

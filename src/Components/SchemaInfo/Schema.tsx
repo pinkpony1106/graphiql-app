@@ -8,6 +8,7 @@ function Schema() {
   const [schema, setSchema] = useState<ISchemaType[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [, setError] = useState<string | null>(null);
+  const [selectedField, setSelectedField] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSchema = async () => {
@@ -61,12 +62,20 @@ function Schema() {
     fetchSchema();
   }, []);
 
+  const handleFieldClick = (fieldName: string) => {
+    setSelectedField(fieldName === selectedField ? null : fieldName);
+  };
+
   if (loading) return <Loader />;
 
   return (
     <div className={styles.responseContainer}>
       <h2 className={styles.title}>Docs</h2>
-      <SchemaInfo types={schema || []} />
+      <SchemaInfo
+        types={schema || []}
+        selectedField={selectedField}
+        onFieldClick={handleFieldClick}
+      />
     </div>
   );
 }

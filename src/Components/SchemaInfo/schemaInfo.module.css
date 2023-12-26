@@ -1,7 +1,7 @@
 .responseContainer {
   display: flex;
   flex-direction: column;
-  background-color: rgba(129, 129, 129, 0.95);
+  background-color: rgb(74 74 74 / 85%);
   padding: 35px 25px;
   border-radius: 20px;
   font-size: 20px;
@@ -9,6 +9,12 @@
   flex-grow: 1;
   margin: 15px;
   transition: 1s ease-in-out;
+}
+
+.active {
+  border-top: 1px solid #e10098;
+  border-bottom: 1px solid #e10098;
+  background-color: rgba(225, 0, 152, 0.1);
 }
 
 .title {

@@ -32,7 +32,7 @@ function SignIn() {
         <div className={styles.field}>
           <input
             placeholder={t(tKeys.email)}
-            {...register('email', { required: 'Email is required' })}
+            {...register('email', { required: t(tKeys.emailRequired) })}
           />
         </div>
         {errors.email ? <p>{errors.email.message}</p> : null}
@@ -41,7 +41,7 @@ function SignIn() {
           <input
             placeholder={t(tKeys.password)}
             type="password"
-            {...register('password', { required: 'Password is required' })}
+            {...register('password', { required: t(tKeys.passwordRequired) })}
           />
         </div>
         {errors.password ? <p>{errors.password.message}</p> : null}

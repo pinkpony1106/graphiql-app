@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import MainPage from './Pages/MainPage/MainPage';
 import SignIn from './Components/SignIn/SignIn';
 import SignUp from './Components/SignUp/SignUp';
@@ -18,7 +18,8 @@ function App() {
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/graph-ql" element={<GraphlPage />} />
-          <Route path="*" element={<InvalidRoute />} />
+          <Route path="/404" element={<InvalidRoute />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </main>
       <Footer />

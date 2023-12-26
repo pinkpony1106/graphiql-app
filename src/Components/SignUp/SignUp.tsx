@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { IFormInput } from '../../Interfaces/IForms';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../../Shared/validation';
+import { useTranslatedSchema } from '../../Shared/validation';
 import styles from './sign.module.css';
 import { registerWithEmailAndPassword } from '../../Shared/firebase';
 import { useContext } from 'react';
@@ -9,12 +9,13 @@ import { TranslateContext, tKeys } from '../../Context/Context';
 
 function SignUp() {
   const { t } = useContext(TranslateContext);
-  // const schema = useValidationSchema();
+  const translatedSchema = useTranslatedSchema();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ resolver: yupResolver(schema) });
+  } = useForm<IFormInput>({ resolver: yupResolver(translatedSchema) });
 
   const onSubmit = (data: IFormInput) => {
     const { name, email, password } = data;

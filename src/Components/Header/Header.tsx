@@ -44,7 +44,7 @@ function Header() {
         <Link to={'/graph-ql'} className={styles.logo}>
           <img
             className={styles.logoImg}
-            src="src/assets/graphql-logo.svg"
+            src="/src/assets/graphql-logo.svg"
             alt="Graphql logo"
           />
           <div className={styles.title}>{t(tKeys.to_graphiql)}</div>

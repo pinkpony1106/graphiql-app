@@ -25,7 +25,7 @@ function Footer() {
       </div>
       <div>
         <Link to={'https://rs.school/'} target="blank">
-          <img src="src/assets/rs-school-js 1.svg" alt="RSS logo"></img>
+          <img src="/src/assets/rs-school-js 1.svg" alt="RSS logo"></img>
         </Link>
       </div>
     </footer>

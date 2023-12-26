@@ -12,6 +12,8 @@ body,
 
 .main {
   padding: 30px 100px;
+  min-height: calc(100vh - 264px);
+  box-sizing: border-box;
 }
 
 @media (max-width: 800px) {

@@ -6,6 +6,7 @@ import GraphlPage from './Pages/GraphlPage/GraphlPage';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import { TranslateContextProvider } from './Context/Context';
+import InvalidRoute from './Components/404/InvalidRoute';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/graph-ql" element={<GraphlPage />} />
-          <Route path="*" element={<p>not found</p>} />
+          <Route path="*" element={<InvalidRoute />} />
         </Routes>
       </main>
       <Footer />

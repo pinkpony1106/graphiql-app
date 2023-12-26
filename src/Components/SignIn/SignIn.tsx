@@ -1,9 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { IFormInput } from '../../Interfaces/IForms';
 import styles from '../SignUp/sign.module.css';
-import { logInWithEmailAndPassword } from '../../Shared/firebase';
+import { auth, logInWithEmailAndPassword } from '../../Shared/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect } from 'react';
 
 function SignIn() {
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
+
   const {
     register,
     handleSubmit,
@@ -11,15 +17,20 @@ function SignIn() {
   } = useForm<IFormInput>();
 
   const onSubmit = async (data: IFormInput) => {
-    console.log(data);
     const { email, password } = data;
-
     try {
       await logInWithEmailAndPassword(email, password);
     } catch (error) {
       console.error('Auth error:', error);
     }
   };
+
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+    if (user) navigate('/graph-ql');
+  }, [user, loading]);
 
   return (
     <div className={styles.container}>
@@ -51,7 +62,9 @@ function SignIn() {
 
         <div className={styles.registered}>
           <p>Don&apos;t Have an Account Yet?</p>
-          <p className={styles.sign}>Sign Up</p>
+          <Link to={'/signUp'} className={styles.sign}>
+            Sign Up
+          </Link>
         </div>
       </form>
     </div>

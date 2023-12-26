@@ -3,9 +3,15 @@ import { IFormInput } from '../../Interfaces/IForms';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../../Shared/validation';
 import styles from './sign.module.css';
-import { registerWithEmailAndPassword } from '../../Shared/firebase';
+import { auth, registerWithEmailAndPassword } from '../../Shared/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect } from 'react';
 
 function SignUp() {
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
+
   const {
     register,
     handleSubmit,
@@ -17,6 +23,11 @@ function SignUp() {
     registerWithEmailAndPassword(name, email, password);
   };
 
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate('/graph-ql');
+  }, [user, loading]);
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,7 +35,7 @@ function SignUp() {
         <div className={styles.field}>
           <input
             placeholder="Your Name"
-            {...register('name', { required: true })}
+            {...register('name')}
           />
         </div>
         {errors.name ? <p>{errors.name.message}</p> : null}
@@ -32,7 +43,7 @@ function SignUp() {
         <div className={styles.field}>
           <input
             placeholder="Email"
-            {...register('email', { required: true })}
+            {...register('email')}
           />
         </div>
         {errors.email ? <p>{errors.email.message}</p> : null}
@@ -41,7 +52,7 @@ function SignUp() {
           <input
             placeholder="Password"
             type="password"
-            {...register('password', { required: 'Password is required' })}
+            {...register('password')}
           />
         </div>
         {errors.password ? <p>{errors.password.message}</p> : null}
@@ -50,9 +61,7 @@ function SignUp() {
           <input
             placeholder="Password Again"
             type="password"
-            {...register('againPassword', {
-              required: 'Confirm Password is required',
-            })}
+            {...register('againPassword')}
           />
         </div>
         {errors.againPassword ? <p>{errors.againPassword.message}</p> : null}
@@ -61,7 +70,9 @@ function SignUp() {
         </div>
         <div className={styles.registered}>
           <p>Already registered?</p>
-          <p className={styles.sign}>Sign In</p>
+          <Link to={'/signIn'} className={styles.sign}>
+            Sign In
+          </Link>
         </div>
       </form>
     </div>

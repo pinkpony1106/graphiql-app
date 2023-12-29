@@ -26,7 +26,7 @@ function Header() {
 
   useEffect(() => {
     const storedData = localStorage.getItem('currentLanguage');
-    setLang(storedData as ELangs);
+    setLang((storedData as ELangs) ?? ELangs.en);
   }, [setLang]);
 
   const handleLang = (language: ELangs) => {

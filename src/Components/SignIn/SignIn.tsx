@@ -1,9 +1,12 @@
 import { useForm } from 'react-hook-form';
-import { IFormInput } from '../../Interfaces/IForms';
+import { IFormInputSignIn } from '../../Interfaces/IForms';
 import styles from '../SignUp/sign.module.css';
 import { logInWithEmailAndPassword } from '../../Shared/firebase';
 import { useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
+import { schemaSignIn } from '../../Shared/validation';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Link } from 'react-router-dom';
 
 function SignIn() {
   const { t } = useContext(TranslateContext);
@@ -11,9 +14,9 @@ function SignIn() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<IFormInputSignIn>({ resolver: yupResolver(schemaSignIn) });
 
-  const onSubmit = async (data: IFormInput) => {
+  const onSubmit = async (data: IFormInputSignIn) => {
     console.log(data);
     const { email, password } = data;
 
@@ -32,19 +35,19 @@ function SignIn() {
         <div className={styles.field}>
           <input
             placeholder={t(tKeys.email)}
-            {...register('email', { required: t(tKeys.emailRequired) })}
+            {...register('email', { required: true })}
           />
         </div>
-        {errors.email ? <p>{errors.email.message}</p> : null}
+        {errors.email?.message ? <p>{t(errors.email.message)}</p> : null}
 
         <div className={styles.field}>
           <input
             placeholder={t(tKeys.password)}
             type="password"
-            {...register('password', { required: t(tKeys.passwordRequired) })}
+            {...register('password', { required: true })}
           />
         </div>
-        {errors.password ? <p>{errors.password.message}</p> : null}
+        {errors.password?.message ? <p>{t(errors.password.message)}</p> : null}
 
         <div className={styles.submit}>
           <button type="button" onClick={() => handleSubmit(onSubmit)()}>
@@ -53,8 +56,12 @@ function SignIn() {
         </div>
 
         <div className={styles.registered}>
-          <p>{t(tKeys.have_an_account)}</p>
-          <p className={styles.sign}>{t(tKeys.signUp)}</p>
+          <p className={styles.already_registered}>
+            {t(tKeys.have_an_account)}
+          </p>
+          <Link to={'/signUp'}>
+            <p className={styles.sign}>{t(tKeys.signUp)}</p>
+          </Link>
         </div>
       </form>
     </div>

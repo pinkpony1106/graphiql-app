@@ -4,3 +4,8 @@ export interface IFormInput {
   password: string;
   againPassword?: string;
 }
+
+export interface IFormInputSignIn {
+  email: string;
+  password: string;
+}

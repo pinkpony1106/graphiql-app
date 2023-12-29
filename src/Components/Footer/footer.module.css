@@ -30,13 +30,11 @@
 a .text {
   font-size: 17px;
   color: #fff;
-  text-decoration: underline black;
   cursor: pointer;
 }
 a .text:hover {
   font-size: 17px;
   color: #e10098;
-  text-decoration: underline black;
   cursor: pointer;
 }
 

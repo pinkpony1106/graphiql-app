@@ -10,7 +10,7 @@ import {
 import { ELangs, languages } from '../Locales/LanguagesConstants';
 
 export const TranslateContext = createContext<{
-  t: (key: keyof typeof tKeys) => string;
+  t: (key: string) => string;
   setLang: Dispatch<SetStateAction<ELangs>>;
   lang: ELangs;
 }>(null!);
@@ -68,13 +68,24 @@ export const tKeys = {
   copyright_2023: 'copyright_2023',
 } as const;
 
+export const isValidTKey = (
+  candidate: string
+): candidate is keyof typeof tKeys => {
+  return candidate in tKeys;
+};
+
 export const TranslateContextProvider: FC<PropsWithChildren> = ({
   children,
 }) => {
   const [lang, setLang] = useState(ELangs.en);
 
   const t = useCallback(
-    (key: keyof typeof tKeys) => languages[lang][key],
+    (key: string) => {
+      if (isValidTKey(key)) {
+        return languages[lang][key];
+      }
+      throw new Error('Attempt to use invalid tKey');
+    },
     [lang]
   );
 

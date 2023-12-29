@@ -16,6 +16,10 @@ body,
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media (max-width: 800px) {
   .main {
     padding: 30px 50px;

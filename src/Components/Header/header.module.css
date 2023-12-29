@@ -31,7 +31,6 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  text-decoration: none;
 }
 .logoImg {
   height: 44px;
@@ -42,7 +41,6 @@
   font-size: 25px;
 }
 .home {
-  text-decoration: none;
   color: #fff;
   font-size: 17px;
 }
@@ -73,7 +71,6 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  text-decoration: none;
 }
 .pinkButton:hover {
   background-color: #e1009ad5;

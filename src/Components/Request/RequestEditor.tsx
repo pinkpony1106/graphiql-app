@@ -1,10 +1,13 @@
-import style from './request.module.css';
 import QueryTextEditor from './QueryTextEditor/QueryTextEditor';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
-// import fetchResult from '../../store/slices/requestSlice';
+import { useState } from 'react';
+
+import style from './request.module.css';
+// import { fetchResult } from '../../store/slices/requestSlice';
 
 export default function RequestEditor() {
+  const [variablesVisible, setVariablesVisible] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
 
@@ -63,35 +66,37 @@ export default function RequestEditor() {
         </div>
         <QueryTextEditor />
       </div>
-      <div className={style.variablesAndHeadersContainerVH}>
-        <div className={style.buttonsContainerVH}>
-          <div className={`${style.button} ${style.buttonVH}`}>open/hide</div>
-          <div className={`${style.button} ${style.buttonVH}`}>VARIABLES</div>
-          <div className={`${style.button} ${style.buttonVH}`}>HEADERS</div>
+      {!variablesVisible && (
+        <div
+          className={`${style.variablesAndHeadersContainerVH} ${style.containerClosed}`}
+        >
+          <div className={style.buttonsContainerVH}>
+            <div
+              className={`${style.buttonOpenClose} ${style.buttonVH}`}
+              onClick={() => setVariablesVisible(!variablesVisible)}
+            >
+              &#x25B2;
+            </div>
+            <div className={`${style.button} ${style.buttonVH}`}>VARIABLES</div>
+            <div className={`${style.button} ${style.buttonVH}`}>HEADERS</div>
+          </div>
         </div>
-        V&H
-      </div>
+      )}
+      {variablesVisible && (
+        <div className={style.variablesAndHeadersContainerVH}>
+          <div className={style.buttonsContainerVH}>
+            <div
+              className={`${style.buttonOpenClose} ${style.buttonVH}`}
+              onClick={() => setVariablesVisible(!variablesVisible)}
+            >
+              &#x25BC;
+            </div>
+            <div className={`${style.button} ${style.buttonVH}`}>VARIABLES</div>
+            <div className={`${style.button} ${style.buttonVH}`}>HEADERS</div>
+          </div>
+          V&H
+        </div>
+      )}
     </div>
   );
 }
-
-/////base func
-// async function makeRequestWithArgs(
-//   baseUrlArg: string,
-//   headersArg: string,
-//   //   operationNameArg = null,
-//   queryStringArg: string,
-//   variablesArg: string
-// ) {
-//   const results = await fetch(baseUrlArg, {
-//     method: 'POST',
-//     headers: { headersArg, 'Content-type': 'application/json' },
-//     body: JSON.stringify({
-//       //   operationName: operationNameArg,
-//       query: queryStringArg,
-//       variables: variablesArg,
-//     }),
-//   });
-//   const characters = await results.json();
-//   console.log(characters.data);
-// }

@@ -14,8 +14,9 @@ type InitialRequestStateType = {
 
 export const fetchResult = createAsyncThunk<string, RequestParamsType>(
   'result',
-  async (params: RequestParamsType) => {
-    // console.log('aaa');
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async (params: RequestParamsType, thunkAPI) => {
     const url = params.url ?? 'https://swapi-graphql.eskerda.vercel.app/';
     const headers = params.headers
       ? { ...params.headers, 'Content-type': 'application/json' }

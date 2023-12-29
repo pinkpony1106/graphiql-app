@@ -1,4 +1,4 @@
-export interface IFormInput {
+export interface IFormInputSignUp {
   name: string;
   email: string;
   password: string;

@@ -1,15 +1,15 @@
 import QueryTextEditor from './QueryTextEditor/QueryTextEditor';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { useState } from 'react';
+import { fetchResult } from '../../store/slices/requestSlice';
 
 import style from './request.module.css';
-// import { fetchResult } from '../../store/slices/requestSlice';
+import { useAppDispatch } from '../../hooks/redux-hook';
 
 export default function RequestEditor() {
   const [variablesVisible, setVariablesVisible] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const baseUrl = useSelector((state: RootState) => state.urlValue.url);
   const queryText = useSelector(
@@ -45,14 +45,14 @@ export default function RequestEditor() {
       parsedHeaders
     );
 
-    // dispatch(
-    //   fetchResult({
-    //     url: baseUrl,
-    //     query: queryText,
-    //     variables: parsedVariables,
-    //     headers: parsedHeaders,
-    //   })
-    // );
+    dispatch(
+      fetchResult({
+        url: baseUrl,
+        query: queryText,
+        variables: parsedVariables,
+        headers: parsedHeaders,
+      })
+    );
   };
 
   return (

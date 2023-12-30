@@ -1,0 +1,4 @@
+[contentEditable='true']:empty:before {
+  content: attr(placeholder);
+  opacity: 0.6;
+}

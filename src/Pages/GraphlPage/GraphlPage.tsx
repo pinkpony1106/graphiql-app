@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-import Request from '../../Components/Request/Request';
-import Response from '../../Components/Response/Response';
+import RequestEditor from '../../Components/RequestEditor/RequestEditor';
+import ResponseEditor from '../../Components/ResponseEditor/ResponseEditor';
 import SchemaInfo from '../../Components/SchemaInfo/SchemaInfo';
 import style from './graphlPage.module.css';
 import { TranslateContext, tKeys } from '../../Context/Context';
@@ -11,8 +11,8 @@ function GraphlPage() {
   return (
     <div className={style.container}>
       {schemaVisible ? <SchemaInfo /> : null}
-      <Request />
-      <Response />
+      <RequestEditor />
+      <ResponseEditor />
       <div
         className={style.button}
         onClick={() => setSchemaVisible(!schemaVisible)}

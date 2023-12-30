@@ -1,15 +1,21 @@
 import QueryTextEditor from './QueryTextEditor/QueryTextEditor';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import { useState } from 'react';
 import { fetchResult } from '../../store/slices/requestSlice';
-
-import style from './request.module.css';
 import { useAppDispatch } from '../../hooks/redux-hook';
 
+import style from './request.module.css';
+import {
+  updateOpenHeaders,
+  updateOpenVariables,
+} from '../../store/slices/openVarsHeadersSlice';
+import VariablesEditor from './VariablesEditor/VariablesEditor';
+import HeadersEditor from './HeadersEditor/HeadersEditor';
+import UrlEditor from './UrlEditor/UrlEditor';
+
 export default function RequestEditor() {
-  const [variablesVisible, setVariablesVisible] = useState(false);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
+  const dispatchAsync = useAppDispatch();
 
   const baseUrl = useSelector((state: RootState) => state.urlValue.url);
   const queryText = useSelector(
@@ -18,6 +24,13 @@ export default function RequestEditor() {
   const headers = useSelector((state: RootState) => state.headersValue.headers);
   const variables = useSelector(
     (state: RootState) => state.variablesValue.variables
+  );
+
+  const variablesOpen = useSelector(
+    (state: RootState) => state.openVariablesHeaders.openVariables
+  );
+  const headersOpen = useSelector(
+    (state: RootState) => state.openVariablesHeaders.openHeaders
   );
 
   const makeRequest = async () => {
@@ -45,7 +58,7 @@ export default function RequestEditor() {
       parsedHeaders
     );
 
-    dispatch(
+    dispatchAsync(
       fetchResult({
         url: baseUrl,
         query: queryText,
@@ -57,6 +70,7 @@ export default function RequestEditor() {
 
   return (
     <div className={style.requestContainer}>
+      <UrlEditor />
       <div className={style.requestInnerContainer}>
         <div className={style.buttonsContainer}>
           <div className={style.button}>PRETTIFY</div>
@@ -66,37 +80,47 @@ export default function RequestEditor() {
         </div>
         <QueryTextEditor />
       </div>
-      {!variablesVisible && (
-        <div
-          className={`${style.variablesAndHeadersContainerVH} ${style.containerClosed}`}
-        >
-          <div className={style.buttonsContainerVH}>
-            <div
-              className={`${style.buttonOpenClose} ${style.buttonVH}`}
-              onClick={() => setVariablesVisible(!variablesVisible)}
-            >
-              &#x25B2;
-            </div>
-            <div className={`${style.button} ${style.buttonVH}`}>VARIABLES</div>
-            <div className={`${style.button} ${style.buttonVH}`}>HEADERS</div>
+
+      <div className={style.variablesAndHeadersContainerVH}>
+        <div className={style.buttonsContainerVH}>
+          <div
+            className={`${style.button} ${style.buttonVH} ${
+              variablesOpen && style.buttonActive
+            }`}
+            onClick={() => {
+              if (!variablesOpen) {
+                dispatch(updateOpenVariables(true));
+                dispatch(updateOpenHeaders(false));
+              }
+              if (variablesOpen) {
+                dispatch(updateOpenVariables(false));
+                dispatch(updateOpenHeaders(false));
+              }
+            }}
+          >
+            VARIABLES
+          </div>
+          <div
+            className={`${style.button} ${style.buttonVH} ${
+              headersOpen && style.buttonActive
+            }`}
+            onClick={() => {
+              if (!headersOpen) {
+                dispatch(updateOpenVariables(false));
+                dispatch(updateOpenHeaders(true));
+              }
+              if (headersOpen) {
+                dispatch(updateOpenVariables(false));
+                dispatch(updateOpenHeaders(false));
+              }
+            }}
+          >
+            HEADERS
           </div>
         </div>
-      )}
-      {variablesVisible && (
-        <div className={style.variablesAndHeadersContainerVH}>
-          <div className={style.buttonsContainerVH}>
-            <div
-              className={`${style.buttonOpenClose} ${style.buttonVH}`}
-              onClick={() => setVariablesVisible(!variablesVisible)}
-            >
-              &#x25BC;
-            </div>
-            <div className={`${style.button} ${style.buttonVH}`}>VARIABLES</div>
-            <div className={`${style.button} ${style.buttonVH}`}>HEADERS</div>
-          </div>
-          V&H
-        </div>
-      )}
+        {variablesOpen && <VariablesEditor />}
+        {headersOpen && <HeadersEditor />}
+      </div>
     </div>
   );
 }

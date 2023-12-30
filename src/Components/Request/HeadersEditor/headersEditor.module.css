@@ -1,0 +1,10 @@
+.headersContainer {
+  flex-grow: 1;
+  min-height: 20vh;
+  padding: 0 20px;
+}
+
+[contentEditable='true']:empty:before {
+  content: attr(placeholder);
+  opacity: 0.6;
+}

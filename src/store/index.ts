@@ -4,6 +4,7 @@ import variablesValueReducer from './slices/variablesSlice';
 import headersValueReducer from './slices/headersSlice';
 import urlValueReducer from './slices/urlSlice';
 import queryTextValueReducer from './slices/queryTextSlice';
+import openVariablesHeadersReducer from './slices/openVarsHeadersSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     variablesValue: variablesValueReducer,
     headersValue: headersValueReducer,
     requestValue: requestValueReducer,
+    openVariablesHeaders: openVariablesHeadersReducer,
   },
 });
 

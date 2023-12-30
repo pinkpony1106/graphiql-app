@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  queryText: `query NewQuery { allPeople(first: 3) { people { name } }}`,
+  queryText: `query NewQuery {character(id: 1) { name } }`,
 };
 
 const queryTextSlice = createSlice({

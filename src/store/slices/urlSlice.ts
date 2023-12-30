@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { url: 'https://swapi-graphql.eskerda.vercel.app/' };
+const initialState = { url: 'https://rickandmortyapi.com/graphql' };
 
 const urlSlice = createSlice({
   name: 'urlValue',

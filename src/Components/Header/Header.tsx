@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './header.module.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import IconClose from './IconClose/IconClose';
 import IconBurger from './IconBurger/IconBurger';
+import { TranslateContext, tKeys } from '../../Context/Context';
+import { ELangs } from '../../Locales/LanguagesConstants';
 
 function Header() {
-  const [openLanguage, setOpenLanguage] = useState(false);
   const [animatedHeader, setAnimatedHeader] = useState(false);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
-
-  const handleOpenLanguage = () => {
-    setOpenLanguage(!openLanguage);
-  };
+  const { t, setLang, lang } = useContext(TranslateContext);
 
   useEffect(() => {
     const headerListener = () => {
@@ -26,6 +24,16 @@ function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const storedData = localStorage.getItem('currentLanguage');
+    setLang((storedData as ELangs) ?? ELangs.en);
+  }, [setLang]);
+
+  const handleLang = (language: ELangs) => {
+    setLang(language);
+    localStorage.setItem('currentLanguage', language);
+  };
+
   return (
     <header
       className={classNames(styles.header, {
@@ -36,34 +44,46 @@ function Header() {
         <Link to={'/graph-ql'} className={styles.logo}>
           <img
             className={styles.logoImg}
-            src="src/assets/graphql-logo.svg"
+            src="/src/assets/graphql-logo.svg"
             alt="Graphql logo"
           />
-          <div className={styles.title}>GraphQL</div>
+          <div className={styles.title}>{t(tKeys.to_graphiql)}</div>
         </Link>
         <div className={styles.navDesktop}>
           <Link to={'/'} className={styles.home}>
-            Home
+            {t(tKeys.home)}
           </Link>
-          <Link to={'/signIn'} className="pinkButton">
-            Sign In
+          <Link to={'/signIn'} className={styles.pinkButton}>
+            {t(tKeys.signIn)}
           </Link>
-          <Link to={'/signUp'} className="pinkButton">
-            Sign Up
+          <Link to={'/signUp'} className={styles.pinkButton}>
+            {t(tKeys.signUp)}
           </Link>
-
-          <button className="blackButtonLang" onClick={handleOpenLanguage}>
-            {openLanguage ? (
-              <>
-                <div>English</div>
-                <img src="src/assets/lang-arrow.svg" />
-              </>
-            ) : (
-              <>
-                <div>Russian</div>
-                <img src="src/assets/lang-arrow.svg" />
-              </>
-            )}
+          <button className={styles.blackButtonLang}>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.en,
+              })}
+              onClick={() => handleLang(ELangs.en)}
+            >
+              EN
+            </div>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.ru,
+              })}
+              onClick={() => handleLang(ELangs.ru)}
+            >
+              RU
+            </div>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.bel,
+              })}
+              onClick={() => handleLang(ELangs.bel)}
+            >
+              BLR
+            </div>
           </button>
         </div>
         {openBurgerMenu ? (
@@ -72,32 +92,43 @@ function Header() {
           <IconBurger onClick={() => setOpenBurgerMenu(true)} />
         )}
       </div>
-
       {openBurgerMenu ? (
         <div className={styles.mobileMenu}>
           <div className={styles.navMobile}>
             <Link to={'/'} className={styles.home}>
-              Home
+              {t(tKeys.home)}
             </Link>
-            <Link to={'/signIn'} className="pinkButton">
-              Sign In
+            <Link to={'/signIn'} className={styles.pinkButton}>
+              {t(tKeys.signIn)}
             </Link>
-            <Link to={'/signUp'} className="pinkButton">
-              Sign Up
+            <Link to={'/signUp'} className={styles.pinkButton}>
+              {t(tKeys.signUp)}
             </Link>
-
-            <button className="blackButtonLang" onClick={handleOpenLanguage}>
-              {openLanguage ? (
-                <>
-                  <div>English</div>
-                  <img src="src/assets/lang-arrow.svg" />
-                </>
-              ) : (
-                <>
-                  <div>Russian</div>
-                  <img src="src/assets/lang-arrow.svg" />
-                </>
-              )}
+            <button className={styles.blackButtonLang}>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.en,
+                })}
+                onClick={() => handleLang(ELangs.en)}
+              >
+                EN
+              </div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.ru,
+                })}
+                onClick={() => handleLang(ELangs.ru)}
+              >
+                RU
+              </div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.bel,
+                })}
+                onClick={() => handleLang(ELangs.bel)}
+              >
+                BLR
+              </div>
             </button>
           </div>
         </div>

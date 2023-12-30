@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { fetchResult } from '../../store/slices/requestSlice';
 import { useAppDispatch } from '../../hooks/redux-hook';
+import { useContext } from 'react';
+import { TranslateContext } from '../../Context/Context';
 
 import style from './request.module.css';
 import {
@@ -14,6 +16,8 @@ import HeadersEditor from './HeadersEditor/HeadersEditor';
 import UrlEditor from './UrlEditor/UrlEditor';
 
 export default function RequestEditor() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { t } = useContext(TranslateContext);
   const dispatch = useDispatch();
   const dispatchAsync = useAppDispatch();
 

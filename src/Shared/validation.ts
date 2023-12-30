@@ -1,34 +1,30 @@
 import * as yup from 'yup';
+import { tKeys } from '../Context/Context';
 
 export const schema = yup.object().shape({
   name: yup
     .string()
-    .required('Name is a required field')
-    .matches(/^[A-Z]/, 'Name must start with an uppercase letter'),
-  email: yup
-    .string()
-    .email('Invalid email format')
-    .required('Email is a required field'),
+    .required(tKeys.nameRequired)
+    .matches(/^[A-Z]/, tKeys.nameMatches),
+  email: yup.string().email(tKeys.emailInvalid).required(tKeys.emailRequired),
   password: yup
     .string()
-    .required('Password is a required field')
-    .min(8, 'Password must be at least 8 characters')
+    .required(tKeys.passwordRequired)
+    .min(8, tKeys.passwordMinCharacters)
     .test('password', function (value: string = ''):
       | true
       | yup.ValidationError {
       const lowercaseRegex = /[a-z]/;
       const uppercaseRegex = /[A-Z]/;
       const numberRegex = /[0-9]/;
-      const symbolRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-]/;
+      const symbolRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-]/; //eslint-disable-line
 
       const errors = [];
 
-      if (!lowercaseRegex.test(value))
-        errors.push('one lowercase letter in latin');
-      if (!uppercaseRegex.test(value))
-        errors.push('one capital letter in latin');
-      if (!numberRegex.test(value)) errors.push('one digit');
-      if (!symbolRegex.test(value)) errors.push('one special character');
+      if (!lowercaseRegex.test(value)) errors.push(tKeys.passwordOneLowerCase);
+      if (!uppercaseRegex.test(value)) errors.push(tKeys.passwordOneCapital);
+      if (!numberRegex.test(value)) errors.push(tKeys.passwordOneDigit);
+      if (!symbolRegex.test(value)) errors.push(tKeys.passwordOneSpecial);
 
       if (errors.length > 0) {
         return this.createError({
@@ -42,4 +38,9 @@ export const schema = yup.object().shape({
   againPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'The passwords dont match '),
+});
+
+export const schemaSignIn = yup.object().shape({
+  email: yup.string().email(tKeys.emailInvalid).required(tKeys.emailRequired),
+  password: yup.string().required(tKeys.passwordRequired),
 });

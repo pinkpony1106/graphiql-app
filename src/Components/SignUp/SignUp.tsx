@@ -1,18 +1,23 @@
 import { useForm } from 'react-hook-form';
-import { IFormInput } from '../../Interfaces/IForms';
+import { IFormInputSignUp } from '../../Interfaces/IForms';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../../Shared/validation';
 import styles from './sign.module.css';
 import { registerWithEmailAndPassword } from '../../Shared/firebase';
+import { useContext } from 'react';
+import { TranslateContext, tKeys } from '../../Context/Context';
+import { schema } from '../../Shared/validation';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
+  const { t } = useContext(TranslateContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ resolver: yupResolver(schema) });
+  } = useForm<IFormInputSignUp>({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data: IFormInput) => {
+  const onSubmit = (data: IFormInputSignUp) => {
     const { name, email, password } = data;
     registerWithEmailAndPassword(name, email, password);
   };
@@ -20,48 +25,52 @@ function SignUp() {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h4 className={styles.title}>Sign Up</h4>
+        <h4 className={styles.title}>{t(tKeys.signUp)}</h4>
         <div className={styles.field}>
           <input
-            placeholder="Your Name"
+            placeholder={t(tKeys.name)}
             {...register('name', { required: true })}
           />
         </div>
-        {errors.name ? <p>{errors.name.message}</p> : null}
+        {errors.name?.message ? <p>{t(errors.name.message)}</p> : null}
 
         <div className={styles.field}>
           <input
-            placeholder="Email"
+            placeholder={t(tKeys.email)}
             {...register('email', { required: true })}
           />
         </div>
-        {errors.email ? <p>{errors.email.message}</p> : null}
+        {errors.email?.message ? <p>{t(errors.email.message)}</p> : null}
 
         <div className={styles.field}>
           <input
-            placeholder="Password"
+            placeholder={t(tKeys.password)}
             type="password"
-            {...register('password', { required: 'Password is required' })}
+            {...register('password', { required: true })}
           />
         </div>
-        {errors.password ? <p>{errors.password.message}</p> : null}
+        {errors.password?.message ? <p>{t(errors.password.message)}</p> : null}
 
         <div className={styles.field}>
           <input
-            placeholder="Password Again"
+            placeholder={t(tKeys.password_again)}
             type="password"
             {...register('againPassword', {
-              required: 'Confirm Password is required',
+              required: true,
             })}
           />
         </div>
-        {errors.againPassword ? <p>{errors.againPassword.message}</p> : null}
+        {errors.againPassword?.message ? (
+          <p>{t(errors.againPassword.message)}</p>
+        ) : null}
         <div className={styles.submit}>
-          <button type="submit">Sign Up</button>
+          <button type="submit">{t(tKeys.signUp)}</button>
         </div>
         <div className={styles.registered}>
-          <p>Already registered?</p>
-          <p className={styles.sign}>Sign In</p>
+          <p className={styles.already_registered}>{t(tKeys.registered)}</p>
+          <Link to={'/signIn'}>
+            <p className={styles.sign}>{t(tKeys.signIn)}</p>
+          </Link>
         </div>
       </form>
     </div>

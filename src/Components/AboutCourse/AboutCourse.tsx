@@ -1,13 +1,14 @@
+import { useContext } from 'react';
 import style from './aboutCourse.module.css';
+import { TranslateContext, tKeys } from '../../Context/Context';
+import { Link } from 'react-router-dom';
 
 function AboutCourse() {
+  const { t } = useContext(TranslateContext);
   return (
     <div className={style.container}>
-      <div className={style.header}>About the course</div>
-      <div className={style.text}>
-        RS School is free-of-charge and community-based education program
-        conducted by The Rolling Scopes developer community since 2013.
-      </div>
+      <div className={style.header}>{t(tKeys.about_course)}</div>
+      <div className={style.text}>{t(tKeys.about_course_text)}</div>
       <div className={style.toolsContainer}>
         <div className={style.toolImage}>
           <div className={style.toolLogo} />
@@ -34,11 +35,10 @@ function AboutCourse() {
           <div className={style.toolLogo} />
         </div>
       </div>
-      <div className={style.text}>
-        The core technologies of the course that we delved into during the
-        program.
-      </div>
-      <div className={style.button}>Join In</div>
+      <div className={style.text}>{t(tKeys.about_course_text_2)}</div>
+      <Link to={'https://rs.school/react/'} target="blank">
+        <div className={style.button}>{t(tKeys.joinIn)}</div>
+      </Link>
     </div>
   );
 }

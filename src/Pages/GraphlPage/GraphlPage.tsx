@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import RequestEditor from '../../Components/Request/RequestEditor';
+import RequestEditor from '../../Components/RequestEditor/RequestEditor';
 import ResponseEditor from '../../Components/ResponseEditor/ResponseEditor';
 import SchemaInfo from '../../Components/SchemaInfo/SchemaInfo';
 import style from './graphlPage.module.css';

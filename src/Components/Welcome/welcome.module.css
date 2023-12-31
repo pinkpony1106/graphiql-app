@@ -1,6 +1,6 @@
 .welcomeContainer {
-  height: 92vh;
-  width: 100vw;
+  height: 87vh;
+  width: 95vw;
   background-image: image-set(
     url('./welcomeIcons/welcomeBg.png') 1x,
     url('./welcomeIcons/welcomeBg@2x.png') 2x

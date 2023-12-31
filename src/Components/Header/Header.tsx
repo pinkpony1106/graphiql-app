@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './header.module.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import IconClose from './IconClose/IconClose';
 import IconBurger from './IconBurger/IconBurger';
-import { onAuthStateChanged } from 'firebase/auth';
+import { TranslateContext, tKeys } from '../../Context/Context';
+import { ELangs } from '../../Locales/LanguagesConstants';
 import { auth } from '../../Shared/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import LogOut from '../LogOut/LogOut';
 
 function Header() {
-  const [openLanguage, setOpenLanguage] = useState(false);
   const [animatedHeader, setAnimatedHeader] = useState(false);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+  const { t, setLang, lang } = useContext(TranslateContext);
   const [isLoggedIn, setLoggedIn] = useState(!!auth.currentUser);
 
   useEffect(() => {
@@ -21,10 +23,6 @@ function Header() {
 
     return () => unsubscribe();
   }, []);
-
-  const handleOpenLanguage = () => {
-    setOpenLanguage(!openLanguage);
-  };
 
   useEffect(() => {
     const headerListener = () => {
@@ -38,6 +36,16 @@ function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const storedData = localStorage.getItem('currentLanguage');
+    setLang((storedData as ELangs) ?? ELangs.en);
+  }, [setLang]);
+
+  const handleLang = (language: ELangs) => {
+    setLang(language);
+    localStorage.setItem('currentLanguage', language);
+  };
+
   return (
     <header
       className={classNames(styles.header, {
@@ -48,45 +56,57 @@ function Header() {
         <Link to={'/'} className={styles.logo}>
           <img
             className={styles.logoImg}
-            src="src/assets/graphql-logo.svg"
+            src="/src/assets/graphql-logo.svg"
             alt="Graphql logo"
           />
-          <div className={styles.title}>GraphQL</div>
+          <div className={styles.title}>{t(tKeys.to_graphiql)}</div>
         </Link>
         <div className={styles.navDesktop}>
-          <Link to={'/'} className={styles.home}>
-            Home
+        <Link to={'/'} className={styles.home}>
+            {t(tKeys.home)}
           </Link>
-          {isLoggedIn ? (
-            <div className={styles.authButtonsContainer}>
-              <Link className={styles.home} to={'/graph-ql'}>
-                Main Page
-              </Link>
-              <LogOut />
+        {isLoggedIn ? (
+          <div className={styles.authButtonsContainer}>
+          <Link className={styles.home} to={'/graph-ql'}>
+            Main Page
+          </Link>
+          <LogOut />
+        </div>
+        ):(
+          <div className={styles.authButtonsContainer}>
+          <Link to={'/signIn'} className={styles.pinkButton}>
+            {t(tKeys.signIn)}
+          </Link>
+          <Link to={'/signUp'} className={styles.pinkButton}>
+            {t(tKeys.signUp)}
+          </Link>
+        </div>
+        )}
+          <button className={styles.blackButtonLang}>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.en,
+              })}
+              onClick={() => handleLang(ELangs.en)}
+            >
+              EN
             </div>
-          ) : (
-            <div className={styles.authButtonsContainer}>
-              <Link to={'/signIn'} className="pinkButton">
-                Sign In
-              </Link>
-              <Link to={'/signUp'} className="pinkButton">
-                Sign Up
-              </Link>
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.ru,
+              })}
+              onClick={() => handleLang(ELangs.ru)}
+            >
+              RU
             </div>
-          )}
-
-          <button className="blackButtonLang" onClick={handleOpenLanguage}>
-            {openLanguage ? (
-              <>
-                <div>English</div>
-                <img src="src/assets/lang-arrow.svg" />
-              </>
-            ) : (
-              <>
-                <div>Russian</div>
-                <img src="src/assets/lang-arrow.svg" />
-              </>
-            )}
+            <div
+              className={classNames({
+                [styles.langActive]: lang === ELangs.bel,
+              })}
+              onClick={() => handleLang(ELangs.bel)}
+            >
+              BLR
+            </div>
           </button>
         </div>
         {openBurgerMenu ? (
@@ -95,12 +115,11 @@ function Header() {
           <IconBurger onClick={() => setOpenBurgerMenu(true)} />
         )}
       </div>
-
       {openBurgerMenu ? (
         <div className={styles.mobileMenu}>
           <div className={styles.navMobile}>
             <Link to={'/'} className={styles.home}>
-              Home
+              {t(tKeys.home)}
             </Link>
             {isLoggedIn ? (
               <div className={styles.authButtonsBurger}>
@@ -111,27 +130,40 @@ function Header() {
               </div>
             ) : (
               <div>
-                <Link to={'/signIn'} className="pinkButton">
-                  Sign In
-                </Link>
-                <Link to={'/signUp'} className="pinkButton">
-                  Sign Up
-                </Link>
+              <Link to={'/signIn'} className={styles.pinkButton}>
+                {t(tKeys.signIn)}
+              </Link>
+              <Link to={'/signUp'} className={styles.pinkButton}>
+                {t(tKeys.signUp)}
+              </Link>
               </div>
             )}
 
-            <button className="blackButtonLang" onClick={handleOpenLanguage}>
-              {openLanguage ? (
-                <>
-                  <div>English</div>
-                  <img src="src/assets/lang-arrow.svg" />
-                </>
-              ) : (
-                <>
-                  <div>Russian</div>
-                  <img src="src/assets/lang-arrow.svg" />
-                </>
-              )}
+            <button className={styles.blackButtonLang}>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.en,
+                })}
+                onClick={() => handleLang(ELangs.en)}
+              >
+                EN
+              </div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.ru,
+                })}
+                onClick={() => handleLang(ELangs.ru)}
+              >
+                RU
+              </div>
+              <div
+                className={classNames({
+                  [styles.langActive]: lang === ELangs.bel,
+                })}
+                onClick={() => handleLang(ELangs.bel)}
+              >
+                BLR
+              </div>
             </button>
           </div>
         </div>

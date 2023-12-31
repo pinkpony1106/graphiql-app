@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap');
+
 .header {
   position: sticky;
   top: 0;
@@ -6,6 +8,7 @@
   z-index: 1;
   background-color: rgba(0, 0, 0, 1);
   padding: 25px 0;
+  font-family: 'Jost', sans-serif;
 }
 
 .header.scroll {
@@ -29,7 +32,6 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .logoImg {
@@ -43,7 +45,6 @@
 }
 
 .home {
-  text-decoration: none;
   color: #fff;
   font-size: 17px;
 }
@@ -63,6 +64,47 @@
   gap: 15px;
   cursor: pointer;
   margin-top: 10px;
+}
+.pinkButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 20px;
+  background-color: #e10098;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.pinkButton:hover {
+  background-color: #e1009ad5;
+}
+
+.blackButtonLang {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: #000;
+  padding: 0px;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #e10098;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+}
+.blackButtonLang div {
+  padding: 3px;
+}
+.langActive {
+  background-color: #e10098;
+  color: #000;
+  border-radius: 8px;
+  transition: all 0.3s;
 }
 
 .authButtonsContainer {

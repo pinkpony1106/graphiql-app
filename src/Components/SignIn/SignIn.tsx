@@ -1,14 +1,18 @@
 import { useForm } from 'react-hook-form';
+import {useContext} from 'react';
 import { IFormInputSignIn } from '../../Interfaces/IForms';
 import styles from '../SignUp/sign.module.css';
-import { logInWithEmailAndPassword } from '../../Shared/firebase';
-import { useContext } from 'react';
+import { auth, logInWithEmailAndPassword } from '../../Shared/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
-import { schemaSignIn } from '../../Shared/validation';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
+import { schemaSignIn } from '../../Shared/validation';
 
 function SignIn() {
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
   const { t } = useContext(TranslateContext);
   const {
     register,
@@ -17,15 +21,20 @@ function SignIn() {
   } = useForm<IFormInputSignIn>({ resolver: yupResolver(schemaSignIn) });
 
   const onSubmit = async (data: IFormInputSignIn) => {
-    console.log(data);
     const { email, password } = data;
-
     try {
       await logInWithEmailAndPassword(email, password);
     } catch (error) {
       console.error('Auth error:', error);
     }
   };
+
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+    if (user) navigate('/graph-ql');
+  }, [user, loading]);
 
   return (
     <div className={styles.container}>

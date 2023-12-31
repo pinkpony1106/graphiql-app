@@ -6,11 +6,23 @@ import IconClose from './IconClose/IconClose';
 import IconBurger from './IconBurger/IconBurger';
 import { TranslateContext, tKeys } from '../../Context/Context';
 import { ELangs } from '../../Locales/LanguagesConstants';
+import { auth } from '../../Shared/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import LogOut from '../LogOut/LogOut';
 
 function Header() {
   const [animatedHeader, setAnimatedHeader] = useState(false);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   const { t, setLang, lang } = useContext(TranslateContext);
+  const [isLoggedIn, setLoggedIn] = useState(!!auth.currentUser);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setLoggedIn(!!user);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const headerListener = () => {
@@ -41,7 +53,7 @@ function Header() {
       })}
     >
       <div className={styles.container}>
-        <Link to={'/graph-ql'} className={styles.logo}>
+        <Link to={'/'} className={styles.logo}>
           <img
             className={styles.logoImg}
             src="/src/assets/graphql-logo.svg"
@@ -50,15 +62,26 @@ function Header() {
           <div className={styles.title}>{t(tKeys.to_graphiql)}</div>
         </Link>
         <div className={styles.navDesktop}>
-          <Link to={'/'} className={styles.home}>
+        <Link to={'/'} className={styles.home}>
             {t(tKeys.home)}
           </Link>
+        {isLoggedIn ? (
+          <div className={styles.authButtonsContainer}>
+          <Link className={styles.home} to={'/graph-ql'}>
+            Main Page
+          </Link>
+          <LogOut />
+        </div>
+        ):(
+          <div className={styles.authButtonsContainer}>
           <Link to={'/signIn'} className={styles.pinkButton}>
             {t(tKeys.signIn)}
           </Link>
           <Link to={'/signUp'} className={styles.pinkButton}>
             {t(tKeys.signUp)}
           </Link>
+        </div>
+        )}
           <button className={styles.blackButtonLang}>
             <div
               className={classNames({
@@ -98,12 +121,24 @@ function Header() {
             <Link to={'/'} className={styles.home}>
               {t(tKeys.home)}
             </Link>
-            <Link to={'/signIn'} className={styles.pinkButton}>
-              {t(tKeys.signIn)}
-            </Link>
-            <Link to={'/signUp'} className={styles.pinkButton}>
-              {t(tKeys.signUp)}
-            </Link>
+            {isLoggedIn ? (
+              <div className={styles.authButtonsBurger}>
+                <Link className={styles.home} to={'/graph-ql'}>
+                  Main Page
+                </Link>
+                <LogOut />
+              </div>
+            ) : (
+              <div>
+              <Link to={'/signIn'} className={styles.pinkButton}>
+                {t(tKeys.signIn)}
+              </Link>
+              <Link to={'/signUp'} className={styles.pinkButton}>
+                {t(tKeys.signUp)}
+              </Link>
+              </div>
+            )}
+
             <button className={styles.blackButtonLang}>
               <div
                 className={classNames({

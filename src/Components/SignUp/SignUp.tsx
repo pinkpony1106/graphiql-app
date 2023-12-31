@@ -2,13 +2,16 @@ import { useForm } from 'react-hook-form';
 import { IFormInputSignUp } from '../../Interfaces/IForms';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './sign.module.css';
-import { registerWithEmailAndPassword } from '../../Shared/firebase';
-import { useContext } from 'react';
+import { auth, registerWithEmailAndPassword } from '../../Shared/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect, useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
 import { schema } from '../../Shared/validation';
-import { Link } from 'react-router-dom';
 
 function SignUp() {
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
   const { t } = useContext(TranslateContext);
 
   const {
@@ -22,6 +25,11 @@ function SignUp() {
     registerWithEmailAndPassword(name, email, password);
   };
 
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate('/graph-ql');
+  }, [user, loading]);
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -29,7 +37,7 @@ function SignUp() {
         <div className={styles.field}>
           <input
             placeholder={t(tKeys.name)}
-            {...register('name', { required: true })}
+            {...register('name')}
           />
         </div>
         {errors.name?.message ? <p>{t(errors.name.message)}</p> : null}
@@ -37,7 +45,7 @@ function SignUp() {
         <div className={styles.field}>
           <input
             placeholder={t(tKeys.email)}
-            {...register('email', { required: true })}
+            {...register('email')}
           />
         </div>
         {errors.email?.message ? <p>{t(errors.email.message)}</p> : null}
@@ -46,7 +54,7 @@ function SignUp() {
           <input
             placeholder={t(tKeys.password)}
             type="password"
-            {...register('password', { required: true })}
+            {...register('password')}
           />
         </div>
         {errors.password?.message ? <p>{t(errors.password.message)}</p> : null}
@@ -55,9 +63,7 @@ function SignUp() {
           <input
             placeholder={t(tKeys.password_again)}
             type="password"
-            {...register('againPassword', {
-              required: true,
-            })}
+            {...register('againPassword')}
           />
         </div>
         {errors.againPassword?.message ? (

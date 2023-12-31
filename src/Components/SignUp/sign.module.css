@@ -79,5 +79,6 @@ button {
 }
 
 .sign {
-  color: #e10098;
+    color: #E10098;
+    text-decoration: none;
 }

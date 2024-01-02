@@ -28,25 +28,19 @@ function SignUp() {
   useEffect(() => {
     if (loading) return;
     if (user) navigate('/graph-ql');
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className={styles.title}>{t(tKeys.signUp)}</h4>
         <div className={styles.field}>
-          <input
-            placeholder={t(tKeys.name)}
-            {...register('name')}
-          />
+          <input placeholder={t(tKeys.name)} {...register('name')} />
         </div>
         {errors.name?.message ? <p>{t(errors.name.message)}</p> : null}
 
         <div className={styles.field}>
-          <input
-            placeholder={t(tKeys.email)}
-            {...register('email')}
-          />
+          <input placeholder={t(tKeys.email)} {...register('email')} />
         </div>
         {errors.email?.message ? <p>{t(errors.email.message)}</p> : null}
 

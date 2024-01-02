@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { IFormInputSignIn } from '../../Interfaces/IForms';
 import styles from '../SignUp/sign.module.css';
 import { auth, logInWithEmailAndPassword } from '../../Shared/firebase';
@@ -34,7 +34,7 @@ function SignIn() {
       return;
     }
     if (user) navigate('/graph-ql');
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <div className={styles.container}>

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { IFormInputSignIn } from '../../Interfaces/IForms';
 import styles from '../SignUp/sign.module.css';
 import { auth, logInWithEmailAndPassword } from '../../Shared/firebase';

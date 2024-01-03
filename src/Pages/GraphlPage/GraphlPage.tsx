@@ -8,6 +8,7 @@ import Schema from '../../Components/SchemaInfo/Schema';
 function GraphlPage() {
   const [schemaVisible, setSchemaVisible] = useState(false);
   const { t } = useContext(TranslateContext);
+
   return (
     <div className={style.container}>
       {schemaVisible ? <Schema /> : null}

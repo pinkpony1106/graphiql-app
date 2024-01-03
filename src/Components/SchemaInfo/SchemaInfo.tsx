@@ -28,8 +28,9 @@ const SchemaInfo: FC<ISchemaInfoProps> = ({
         <h2 className={styles.titleSchema}>Queries</h2>
         {types?.map((type) => (
           <div
-            className={`${styles.containerTypes} ${selectedField === type.name ? styles.active : ''
-              }`}
+            className={`${styles.containerTypes} ${
+              selectedField === type.name ? styles.active : ''
+            }`}
             key={type.name}
             onClick={() => handleTypeClick(type)}
           >

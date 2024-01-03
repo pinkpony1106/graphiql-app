@@ -5,6 +5,7 @@ import headersValueReducer from './slices/headersSlice';
 import urlValueReducer from './slices/urlSlice';
 import queryTextValueReducer from './slices/queryTextSlice';
 import openVariablesHeadersReducer from './slices/openVarsHeadersSlice';
+import schemaReducer from './slices/schemaSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     headersValue: headersValueReducer,
     requestValue: requestValueReducer,
     openVariablesHeaders: openVariablesHeadersReducer,
+    schema: schemaReducer,
   },
 });
 

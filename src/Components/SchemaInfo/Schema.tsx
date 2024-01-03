@@ -1,19 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import SchemaInfo from './SchemaInfo';
-import { ISchemaType } from './SchemaTypes';
 import styles from './schemaInfo.module.css';
 import Loader from '../Loader/Loader';
+import { RootState } from '../../store';
+import {
+  setError,
+  setLoading,
+  setSchema,
+  setSelectedField,
+} from '../../store/slices/schemaSlice';
 
 function Schema() {
-  const [schema, setSchema] = useState<ISchemaType[] | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [, setError] = useState<string | null>(null);
-  const [selectedField, setSelectedField] = useState<string | null>(null);
+  const dispatch = useDispatch();
+  const { schema, loading, error, selectedField } = useSelector(
+    (state: RootState) => state.schema
+  );
+  const { url } = useSelector((state: RootState) => state.urlValue);
 
   useEffect(() => {
     const fetchSchema = async () => {
+      dispatch(setLoading(true));
+
       try {
-        const response = await fetch('https://rickandmortyapi.com/graphql', {
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -44,32 +54,33 @@ function Schema() {
         const excludedKinds = ['SCALAR', 'INPUT_OBJECT', 'ENUM'];
         const excludedNames = ['Query', 'Root'];
         const filteredSchema = result.data.__schema.types.filter(
-          (type: ISchemaType) =>
+          (type: { name: string; kind: string }) =>
             !type.name.startsWith('__') &&
             !excludedKinds.includes(type.kind) &&
             !excludedNames.includes(type.name)
         );
-        setSchema(filteredSchema);
+        dispatch(setSchema(filteredSchema));
       } catch (error) {
         if (error instanceof Error) {
-          setError(error.message);
+          dispatch(setError(error.message));
         }
       } finally {
-        setLoading(false);
+        dispatch(setLoading(false));
       }
     };
 
     fetchSchema();
-  }, []);
+  }, [dispatch, url]);
 
   const handleFieldClick = (fieldName: string) => {
-    setSelectedField(fieldName === selectedField ? null : fieldName);
+    dispatch(setSelectedField(fieldName === selectedField ? null : fieldName));
   };
 
   if (loading) return <Loader />;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className={styles.responseContainer}>
+    <div className={styles.schemaContainer}>
       <h2 className={styles.title}>Docs</h2>
       <SchemaInfo
         types={schema || []}

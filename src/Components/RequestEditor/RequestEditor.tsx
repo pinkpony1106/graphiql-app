@@ -4,7 +4,7 @@ import { RootState } from '../../store';
 import { fetchResult } from '../../store/slices/requestSlice';
 import { useAppDispatch } from '../../hooks/redux-hook';
 import { useContext } from 'react';
-import { TranslateContext } from '../../Context/Context';
+import { TranslateContext, tKeys } from '../../Context/Context';
 
 import style from './request.module.css';
 import {
@@ -16,7 +16,6 @@ import HeadersEditor from './HeadersEditor/HeadersEditor';
 import UrlEditor from './UrlEditor/UrlEditor';
 
 export default function RequestEditor() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t } = useContext(TranslateContext);
   const dispatch = useDispatch();
   const dispatchAsync = useAppDispatch();
@@ -77,9 +76,11 @@ export default function RequestEditor() {
       <UrlEditor />
       <div className={style.requestInnerContainer}>
         <div className={style.buttonsContainer}>
-          <div className={style.button}>PRETTIFY</div>
+          <div className={style.button}>
+            <img src="/requestIcons/prettify.svg" alt="prettity pic"></img>
+          </div>
           <div className={style.button} onClick={makeRequest}>
-            REQUEST
+            {t(tKeys.request)}
           </div>
         </div>
         <QueryTextEditor />
@@ -102,7 +103,7 @@ export default function RequestEditor() {
               }
             }}
           >
-            VARIABLES
+            {t(tKeys.variables)}
           </div>
           <div
             className={`${style.button} ${style.buttonVH} ${
@@ -119,7 +120,7 @@ export default function RequestEditor() {
               }
             }}
           >
-            HEADERS
+            {t(tKeys.headers)}
           </div>
         </div>
         {variablesOpen && <VariablesEditor />}

@@ -20,6 +20,8 @@ export const tKeys = {
   home: 'home',
   signIn: 'signIn',
   signUp: 'signUp',
+  logOut: 'logOut',
+  mainPage: 'mainPage',
   ask_for: 'ask_for',
   get_results: 'get_results',
   get_started: 'get_started',
@@ -66,6 +68,9 @@ export const tKeys = {
   julia: 'julia',
   to_graphiql_docs: 'to_graphiql_docs',
   copyright_2023: 'copyright_2023',
+  variables: 'variables',
+  headers: 'headers',
+  prettify: 'prettify',
 } as const;
 
 export const isValidTKey = (

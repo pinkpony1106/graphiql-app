@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap');
+
+.button {
+  font-family: 'Jost';
+}
+.button:hover {
+  background-color: rgba(225, 0, 152, 0.1);
+  border: solid 1px #f921b5;
+}

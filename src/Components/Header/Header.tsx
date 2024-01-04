@@ -62,26 +62,26 @@ function Header() {
           <div className={styles.title}>{t(tKeys.to_graphiql)}</div>
         </Link>
         <div className={styles.navDesktop}>
-        <Link to={'/'} className={styles.home}>
+          <Link to={'/'} className={styles.home}>
             {t(tKeys.home)}
           </Link>
-        {isLoggedIn ? (
-          <div className={styles.authButtonsContainer}>
-          <Link className={styles.home} to={'/graph-ql'}>
-            Main Page
-          </Link>
-          <LogOut />
-        </div>
-        ):(
-          <div className={styles.authButtonsContainer}>
-          <Link to={'/signIn'} className={styles.pinkButton}>
-            {t(tKeys.signIn)}
-          </Link>
-          <Link to={'/signUp'} className={styles.pinkButton}>
-            {t(tKeys.signUp)}
-          </Link>
-        </div>
-        )}
+          {isLoggedIn ? (
+            <div className={styles.authButtonsContainer}>
+              <Link className={styles.home} to={'/graph-ql'}>
+                {t(tKeys.mainPage)}
+              </Link>
+              <LogOut />
+            </div>
+          ) : (
+            <div className={styles.authButtonsContainer}>
+              <Link to={'/signIn'} className={styles.pinkButton}>
+                {t(tKeys.signIn)}
+              </Link>
+              <Link to={'/signUp'} className={styles.pinkButton}>
+                {t(tKeys.signUp)}
+              </Link>
+            </div>
+          )}
           <button className={styles.blackButtonLang}>
             <div
               className={classNames({
@@ -124,18 +124,18 @@ function Header() {
             {isLoggedIn ? (
               <div className={styles.authButtonsBurger}>
                 <Link className={styles.home} to={'/graph-ql'}>
-                  Main Page
+                  {t(tKeys.mainPage)}
                 </Link>
                 <LogOut />
               </div>
             ) : (
               <div>
-              <Link to={'/signIn'} className={styles.pinkButton}>
-                {t(tKeys.signIn)}
-              </Link>
-              <Link to={'/signUp'} className={styles.pinkButton}>
-                {t(tKeys.signUp)}
-              </Link>
+                <Link to={'/signIn'} className={styles.pinkButton}>
+                  {t(tKeys.signIn)}
+                </Link>
+                <Link to={'/signUp'} className={styles.pinkButton}>
+                  {t(tKeys.signUp)}
+                </Link>
               </div>
             )}
 

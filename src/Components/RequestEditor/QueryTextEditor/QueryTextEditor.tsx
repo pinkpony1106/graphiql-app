@@ -12,7 +12,7 @@ type QueryTextEditorType = {
 export default function QueryTextEditor({
   isReadOnly = false,
 }: QueryTextEditorType) {
-  const requestTextDiv = useRef<HTMLPreElement>(null);
+  const requestTextDiv = useRef<HTMLTextAreaElement>(null);
   const initQuery = useSelector(
     (state: RootState) => state.queryTextValue.queryText
   );
@@ -21,32 +21,20 @@ export default function QueryTextEditor({
 
   return (
     <>
-      <pre
-        className={style.requestTextArea}
-        contentEditable={!isReadOnly}
-        suppressContentEditableWarning={true} // warning muted!
-        ref={requestTextDiv}
-        placeholder={initQuery}
-        onInput={() => {
-          requestTextDiv.current?.innerText
-            ? dispatch(updateQueryTextValue(requestTextDiv.current.innerText))
-            : dispatch(updateQueryTextValue(''));
-        }}
-      >
-        {isReadOnly ? response : null}
-      </pre>
-      {/* <textarea
+      <textarea
         className={style.requestTextArea}
         ref={requestTextDiv}
-        placeholder={initQuery}
+        // placeholder={initQuery}
         readOnly={isReadOnly}
-        value={isReadOnly ? response : undefined}
+        spellCheck="false"
+        // value={isReadOnly ? response : undefined}
+        value={isReadOnly ? response : initQuery}
         onInput={() => {
           requestTextDiv.current?.value
             ? dispatch(updateQueryTextValue(requestTextDiv.current.value))
             : dispatch(updateQueryTextValue(''));
         }}
-      /> */}
+      />
     </>
   );
 }

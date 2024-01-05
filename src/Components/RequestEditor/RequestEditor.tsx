@@ -5,6 +5,7 @@ import { fetchResult } from '../../store/slices/requestSlice';
 import { useAppDispatch } from '../../hooks/redux-hook';
 import { useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
+import { makePretty } from './makePretty';
 
 import style from './request.module.css';
 import {
@@ -37,34 +38,9 @@ export default function RequestEditor() {
     (state: RootState) => state.openVariablesHeaders.openHeaders
   );
 
-  const makePretty = () => {
-    const lines = queryText
-      .split(/\r\n|\r|\n/g)
-      .map((x) => x.trim().replace(/\s+/g, ' '))
-      .filter((x) => x != '')
-      .join('')
-      .split('');
-
-    let tabCounter = 0;
-    const tab = '  ';
-
-    const unitedLines = lines
-      .map((x) => {
-        if (x === '}') {
-          if (tabCounter > 0) {
-            tabCounter--;
-          }
-          x = '\n' + `${tab.repeat(tabCounter)}` + `}`;
-        }
-        if (x === '{') {
-          tabCounter++;
-          x = `{\n` + `${tab.repeat(tabCounter)}`;
-        }
-        return x;
-      })
-      .join('');
-    dispatch(updateQueryTextValue(unitedLines));
-    console.log(unitedLines);
+  const prettify = () => {
+    const prettifiedText = makePretty(queryText);
+    dispatch(updateQueryTextValue(prettifiedText));
   };
 
   const makeRequest = async () => {
@@ -107,7 +83,7 @@ export default function RequestEditor() {
       <UrlEditor />
       <div className={style.requestInnerContainer}>
         <div className={style.buttonsContainer}>
-          <div className={style.button} onClick={makePretty}>
+          <div className={style.button} onClick={prettify}>
             <img src="/requestIcons/prettify.svg" alt="prettity pic"></img>
           </div>
           <div className={style.button} onClick={makeRequest}>

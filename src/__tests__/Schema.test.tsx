@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import Schema from '../Components/SchemaInfo/Schema';
@@ -43,10 +43,10 @@ describe('Schema component', () => {
       </Provider>
     );
 
-    await screen.findByText('Docs');
-
-    const titleElement = screen.getByText('Docs');
-    expect(titleElement).toBeInTheDocument();
+    await waitFor(() => {
+      const titleElement = screen.getByText('Docs');
+      expect(titleElement).toBeInTheDocument();
+    });
   });
 });
 

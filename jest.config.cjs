@@ -4,7 +4,10 @@ module.exports = {
   verbose: true,
   testMatch: ['<rootDir>/src/**/*.test.{js,jsx,ts,tsx}'],
   extensionsToTreatAsEsm: ['.jsx, .tsx, .ts'],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/src/Shared/validation\\.ts$',
+  ],
   collectCoverage: true,
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',

@@ -68,7 +68,6 @@ function Header() {
           {isLoggedIn ? (
             <div className={styles.authButtonsContainer}>
               <Link className={styles.home} to={'/graph-ql'}>
-                Main Page
                 {t(tKeys.mainPage)}
               </Link>
               <LogOut />

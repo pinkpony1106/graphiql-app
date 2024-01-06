@@ -28,7 +28,7 @@ function SignUp() {
   useEffect(() => {
     if (loading) return;
     if (user) navigate('/graph-ql');
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <div className={styles.container}>

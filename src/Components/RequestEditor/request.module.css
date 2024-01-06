@@ -71,6 +71,11 @@
   padding-left: 10px;
 }
 
+.button img {
+  width: 20px;
+  height: 20px;
+}
+
 .buttonVH {
   padding-top: 10px;
   margin: 5px;

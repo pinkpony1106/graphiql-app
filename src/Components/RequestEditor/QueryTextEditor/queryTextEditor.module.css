@@ -3,7 +3,8 @@
   opacity: 0.6;
 }
 .requestTextArea {
-  width: 100%;
+  width: calc(100% - 125px);
+  flex-grow: 1;
   height: 100%;
   font-size: 18px;
   background-color: transparent;
@@ -11,10 +12,17 @@
   color: white;
   outline: 0;
 }
+.wide {
+  width: 100%;
+}
 
 @media (max-width: 800px) {
   .requestTextArea {
-    margin: 8px 0;
+    width: calc(100% - 80px);
+    height: 100%;
     font-size: 14px;
+  }
+  .wide {
+    width: 100%;
   }
 }

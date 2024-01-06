@@ -69,6 +69,7 @@ function Header() {
             <div className={styles.authButtonsContainer}>
               <Link className={styles.home} to={'/graph-ql'}>
                 Main Page
+                {t(tKeys.mainPage)}
               </Link>
               <LogOut />
             </div>
@@ -124,7 +125,7 @@ function Header() {
             {isLoggedIn ? (
               <div className={styles.authButtonsBurger}>
                 <Link className={styles.home} to={'/graph-ql'}>
-                  Main Page
+                  {t(tKeys.mainPage)}
                 </Link>
                 <LogOut />
               </div>

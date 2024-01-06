@@ -1,19 +1,20 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import { useContext } from 'react';
-import { TranslateContext } from '../../Context/Context';
 
 import style from './response.module.css';
+import QueryTextEditor from '../RequestEditor/QueryTextEditor/QueryTextEditor';
+import { useContext } from 'react';
+import { TranslateContext, tKeys } from '../../Context/Context';
 
 export default function Response() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t } = useContext(TranslateContext);
   const status = useSelector((state: RootState) => state.requestValue.status);
-  const response = useSelector((state: RootState) => state.requestValue.result);
+  const { t } = useContext(TranslateContext);
+
   return (
     <div className={style.responseContainer}>
-      Response<div>{status}</div>
-      <div>{response}</div>
+      {t(tKeys.response)}
+      <div>{status}</div>
+      <QueryTextEditor isReadOnly />
     </div>
   );
 }

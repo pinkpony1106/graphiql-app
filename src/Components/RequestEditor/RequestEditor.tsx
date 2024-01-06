@@ -5,6 +5,7 @@ import { fetchResult } from '../../store/slices/requestSlice';
 import { useAppDispatch } from '../../hooks/redux-hook';
 import { useContext } from 'react';
 import { TranslateContext, tKeys } from '../../Context/Context';
+import { makePretty } from './makePretty';
 
 import style from './request.module.css';
 import {
@@ -14,6 +15,7 @@ import {
 import VariablesEditor from './VariablesEditor/VariablesEditor';
 import HeadersEditor from './HeadersEditor/HeadersEditor';
 import UrlEditor from './UrlEditor/UrlEditor';
+import { updateQueryTextValue } from '../../store/slices/queryTextSlice';
 
 export default function RequestEditor() {
   const { t } = useContext(TranslateContext);
@@ -35,6 +37,11 @@ export default function RequestEditor() {
   const headersOpen = useSelector(
     (state: RootState) => state.openVariablesHeaders.openHeaders
   );
+
+  const prettify = () => {
+    const prettifiedText = makePretty(queryText);
+    dispatch(updateQueryTextValue(prettifiedText));
+  };
 
   const makeRequest = async () => {
     let parsedVariables: object;
@@ -76,7 +83,7 @@ export default function RequestEditor() {
       <UrlEditor />
       <div className={style.requestInnerContainer}>
         <div className={style.buttonsContainer}>
-          <div className={style.button}>
+          <div className={style.button} onClick={prettify}>
             <img src="/requestIcons/prettify.svg" alt="prettity pic"></img>
           </div>
           <div className={style.button} onClick={makeRequest}>

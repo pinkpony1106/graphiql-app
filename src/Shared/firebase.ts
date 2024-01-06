@@ -11,6 +11,9 @@ import {
   collection,
   addDoc,
   Firestore,
+  getDocs,
+  where,
+  query,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -35,6 +38,7 @@ const logInWithEmailAndPassword = async (
     await signInWithEmailAndPassword(auth, email, password);
     return 'Done';
   } catch (err) {
+    alert('Invalid email or password. Please try again.');
     console.error(err);
     return 'Invalid email or password. Please try again.';
   }
@@ -60,6 +64,19 @@ const registerWithEmailAndPassword = async (
   }
 };
 
+const checkIfEmailExists = async (email: string): Promise<boolean> => {
+  try {
+    const usersRef = collection(db, 'users');
+    const quere = query(usersRef, where('email', '==', email));
+    const querySnapshot = await getDocs(quere);
+
+    return querySnapshot.size > 0;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};
+
 const logout = (): void => {
   signOut(auth);
 };
@@ -70,4 +87,5 @@ export {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   logout,
+  checkIfEmailExists,
 };

@@ -6,24 +6,24 @@ import { RootState } from '../../../store';
 import style from './urlEditor.module.css';
 
 export default function UrlEditor() {
-  const UrlTextDiv = useRef<HTMLDivElement>(null);
+  const UrlTextDiv = useRef<HTMLInputElement>(null);
   const initLUrl = useSelector((state: RootState) => state.urlValue.url);
   const dispatch = useDispatch();
+
   return (
     <div className={style.urlContainer}>
       <div className={style.urlHeader}>GraphQL Server</div>
-      <div
+      <input
+        type="text"
         className={style.urlTextArea}
-        contentEditable="true"
-        suppressContentEditableWarning={true} // warning muted!
         ref={UrlTextDiv}
-        placeholder={initLUrl}
+        defaultValue={initLUrl}
         onInput={() => {
-          UrlTextDiv.current?.innerText
-            ? dispatch(updateUrlValue(UrlTextDiv.current.innerText))
+          UrlTextDiv.current?.value
+            ? dispatch(updateUrlValue(UrlTextDiv.current.value))
             : dispatch(updateUrlValue(''));
         }}
-      ></div>
+      ></input>
     </div>
   );
 }

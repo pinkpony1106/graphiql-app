@@ -100,3 +100,31 @@
 .buttonActive {
   background-color: #fbc1e9;
 }
+
+@media (max-width: 600px) {
+  .requestContainer {
+    margin: 15px 0;
+    padding: 20px 0;
+  }
+  .requestInnerContainer {
+    padding-left: 10px;
+  }
+  .button {
+    border-radius: 8px;
+    margin: 5px 0;
+    width: 70px;
+    height: 30px;
+    font-size: 14px;
+    padding-left: 5px;
+  }
+
+  .button img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .buttonVH {
+    padding-top: 10px;
+    margin: 5px;
+  }
+}

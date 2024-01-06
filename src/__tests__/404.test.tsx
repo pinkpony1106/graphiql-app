@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 
 import { BrowserRouter } from 'react-router-dom';
-import InvalidRoute from '../InvalidRoute';
-import { TranslateContextProvider } from '../../../Context/Context';
+import InvalidRoute from '../Components/404/InvalidRoute';
+import { TranslateContextProvider } from '../Context/Context';
 
 describe('404.test', () => {
   it('should be rendered', () => {

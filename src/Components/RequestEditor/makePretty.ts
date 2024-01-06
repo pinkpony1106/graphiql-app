@@ -29,20 +29,17 @@ export function makePretty(queryText: string) {
     })
     .join('');
 
-  let LinesBefore = unitedLines
-    .replace(/(?<=(\n\s{2,}))(\b\w*\b({.*\n*\s*})*)(\s)(\b\w*\b)/g, `$2$1$5`)
-    .replace(/(?<=(\s*)}\s)(\b\w)/, `$1$2`);
-  let LinesAfter = LinesBefore.replace(
-    /(?<=(\n\s{2,}))(\b\w*\b({.*\n*\s*})*)(\s)(\b\w*\b)/g,
-    `$2$1$5`
-  ).replace(/(?<=(\s*)}\s)(\b\w)/, `$1$2`);
+  const checkInsideBrackets = (string: string) =>
+    string
+      .replace(/(?<=(\n\s{2,}))(\b\w*\b({.*\n*\s*})*)(\s)(\b\w*\b)/g, `$2$1$5`)
+      .replace(/(?<=(\s*)}\s)(\b\w)/, `$1$2`);
+
+  let LinesBefore = checkInsideBrackets(unitedLines);
+  let LinesAfter = checkInsideBrackets(LinesBefore);
 
   while (LinesAfter !== LinesBefore) {
     LinesBefore = LinesAfter;
-    LinesAfter = LinesBefore.replace(
-      /(?<=(\n\s{2,}))(\b\w*\b({.*})*)(\s)(\b\w*\b)/g,
-      `$2$1$5`
-    ).replace(/(?<=(\s*)}\s)(\b\w)/, `$1$2`);
+    LinesAfter = checkInsideBrackets(LinesBefore);
   }
 
   return LinesAfter;

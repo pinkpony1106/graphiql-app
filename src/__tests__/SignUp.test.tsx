@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
 import { TranslateContextProvider } from '../Context/Context';
@@ -34,4 +34,35 @@ test('renders sign up', async () => {
 
   const submitButton = screen.getByRole('button', { name: 'SignUp' });
   expect(submitButton).toBeInTheDocument();
+
+  const linkToSignIn = screen.getByRole('link', { name: 'SignIn' });
+  expect(linkToSignIn).toBeInTheDocument();
+});
+
+test('validates form inputs', async () => {
+  await act(async () => {
+    render(
+      <BrowserRouter>
+        <TranslateContextProvider>
+          <SignUp />
+        </TranslateContextProvider>
+      </BrowserRouter>
+    );
+  });
+
+  const submitButton = screen.getByRole('button', { name: 'SignUp' });
+  fireEvent.click(submitButton);
+  const nameInput = screen.getByPlaceholderText('Your Name');
+  const emailInput = screen.getByPlaceholderText('Email');
+  const passwordInput = screen.getByPlaceholderText('Password');
+  fireEvent.input(nameInput, { target: { value: 'Tanya' } });
+  fireEvent.input(emailInput, { target: { value: 'test@example.com' } });
+  fireEvent.input(passwordInput, { target: { value: 'ValidPassword123!' } });
+
+  fireEvent.click(submitButton);
+
+  await waitFor(() => {
+    expect(screen.queryByText('Email is required')).toBeNull();
+    expect(screen.queryByText('Password is required')).toBeNull();
+  });
 });

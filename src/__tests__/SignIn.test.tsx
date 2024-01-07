@@ -11,6 +11,9 @@ import {
 } from '../Shared/firebase';
 import 'jest-fetch-mock';
 
+global.alert = jest.fn();
+global.console.error = jest.fn();
+
 test('renders sign in', async () => {
   await act(async () => {
     render(
@@ -35,6 +38,9 @@ test('renders sign in', async () => {
 
   const submitButton = screen.getByRole('button', { name: 'SignIn' });
   expect(submitButton).toBeInTheDocument();
+
+  const linkToSignIn = screen.getByRole('link', { name: 'SignUp' });
+  expect(linkToSignIn).toBeInTheDocument();
 });
 
 test('validates form inputs', async () => {

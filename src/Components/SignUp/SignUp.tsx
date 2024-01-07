@@ -2,7 +2,11 @@ import { useForm } from 'react-hook-form';
 import { IFormInputSignUp } from '../../Interfaces/IForms';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './sign.module.css';
-import { auth, registerWithEmailAndPassword } from '../../Shared/firebase';
+import {
+  auth,
+  checkIfEmailExists,
+  registerWithEmailAndPassword,
+} from '../../Shared/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect, useContext } from 'react';
@@ -20,9 +24,14 @@ function SignUp() {
     formState: { errors },
   } = useForm<IFormInputSignUp>({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data: IFormInputSignUp) => {
+  const onSubmit = async (data: IFormInputSignUp) => {
     const { name, email, password } = data;
-    registerWithEmailAndPassword(name, email, password);
+    const emailExists = await checkIfEmailExists(email);
+    if (emailExists) {
+      alert('User with this email already exists');
+    } else {
+      registerWithEmailAndPassword(name, email, password);
+    }
   };
 
   useEffect(() => {

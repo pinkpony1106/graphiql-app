@@ -79,7 +79,7 @@ export default function RequestEditor() {
   };
 
   return (
-    <div className={style.requestContainer}>
+    <div className={style.requestContainer} data-testid="requestEditor">
       <UrlEditor />
       <div className={style.requestInnerContainer}>
         <div className={style.buttonsContainer}>

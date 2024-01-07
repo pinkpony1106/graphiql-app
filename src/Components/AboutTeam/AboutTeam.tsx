@@ -10,7 +10,7 @@ function AboutTeam() {
       <div className={style.header}>{t(tKeys.about_team)}</div>
 
       <div className={style.developerInfoContainer}>
-        <img src="./chick.png" className={style.developerImage} />
+        <img src="./devImage/Tanya.JPG" className={style.developerImage} />
         <div className={style.developerInfo}>
           <div className={style.developerInfoHeader}>{t(tKeys.tania)}</div>
           <div className={style.developerInfoText}>{t(tKeys.tania_text)}</div>
@@ -29,7 +29,7 @@ function AboutTeam() {
       </div>
 
       <div className={style.developerInfoContainer}>
-        <img src="./chick.png" className={style.developerImage} />
+        <img src="./devImage/Anna.jpg" className={style.developerImage} />
         <div className={style.developerInfo}>
           <div className={style.developerInfoHeader}>{t(tKeys.anna)}</div>
           <div className={style.developerInfoText}>{t(tKeys.anna_text)}</div>
@@ -48,7 +48,7 @@ function AboutTeam() {
       </div>
 
       <div className={style.developerInfoContainer}>
-        <img src="./chick.png" className={style.developerImage} />
+        <img src="./devImage/Julia.PNG" className={style.developerImage} />
         <div className={style.developerInfo}>
           <div className={style.developerInfoHeader}>{t(tKeys.julia)}</div>
           <div className={style.developerInfoText}>{t(tKeys.julia_text)}</div>

@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "format:fix": "prettier --write *.{js,css,ts,tsx,jsx}",
     "prepare": "husky install",
-    "test": "jest --coverage"
+    "test": "jest --coverage --collectCoverageFrom='./src/**'"
   },
   "husky": {
     "hooks": {

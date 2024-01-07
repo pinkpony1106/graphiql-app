@@ -1,0 +1,17 @@
+.headersContainer {
+  flex-grow: 1;
+  min-height: 20vh;
+  padding: 0 20px;
+}
+
+[contentEditable='true']:empty:before {
+  content: attr(placeholder);
+  opacity: 0.6;
+}
+@media (max-width: 600px) {
+  .headersContainer {
+    font-size: 16px;
+    min-height: 100px;
+    padding: 0 10px;
+  }
+}

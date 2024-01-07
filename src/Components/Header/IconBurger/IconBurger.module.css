@@ -1,0 +1,16 @@
+.burgerIcon {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+.burgerIcon div {
+  width: 25px;
+  height: 3px;
+  background-color: #e10098;
+}
+
+@media (max-width: 700px) {
+  .burgerIcon {
+    display: flex;
+  }
+}

@@ -1,0 +1,33 @@
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Lato', Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  color: #fff;
+  background-color: black;
+}
+
+.main {
+  padding: 30px 100px;
+  min-height: calc(100vh - 264px);
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .main {
+    padding: 30px 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding: 15px 30px;
+  }
+}

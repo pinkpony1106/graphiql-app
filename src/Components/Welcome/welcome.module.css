@@ -1,0 +1,107 @@
+.welcomeContainer {
+  height: 87vh;
+  width: 95vw;
+  background-image: image-set(
+    url('./welcomeIcons/welcomeBg.png') 1x,
+    url('./welcomeIcons/welcomeBg@2x.png') 2x
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcomeExampleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcomeExample {
+  background-color: rgba(129, 129, 129, 0.24);
+  padding: 35px 25px;
+  border-radius: 20px;
+  font-size: 17px;
+  width: 300px;
+}
+
+.exampleHeader {
+  font-weight: bold;
+}
+
+.welcomeLogo {
+  width: 120px;
+  height: 120px;
+  background-repeat: no-repeat;
+  margin: 0 100px;
+  background-image: url('./welcomeIcons/graphql-icon\ 2.svg');
+}
+
+.button {
+  background-color: rgba(225, 0, 152, 0);
+  border: solid 1px #e10098;
+  border-radius: 10px;
+  padding: 3px 28px;
+  color: #fff;
+  font-size: 17px;
+  margin: 40px;
+  transition: 0.1s ease-in;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(225, 0, 152, 0.1);
+  border: solid 1px #f921b5;
+}
+
+@media screen and (max-width: 1130px) {
+  .welcomeLogoVertical {
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    margin: 0 100px;
+    background-image: url('./welcomeIcons/graphql-icon\ 2.svg');
+  }
+  .welcomeLogo {
+    display: none;
+  }
+
+  .welcomeExample {
+    margin: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .welcomeExampleContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 6vh;
+  }
+
+  .welcomeExample {
+    padding: 25px;
+    margin: 10px;
+  }
+
+  .exampleText {
+    padding-bottom: 0;
+  }
+
+  .welcomeLogo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .welcomeExample {
+    padding: 10px;
+    width: 250px;
+    font-size: 14px;
+  }
+  .welcomeLogoVertical {
+    display: none;
+  }
+}

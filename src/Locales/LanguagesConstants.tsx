@@ -5,7 +5,7 @@ export enum ELangs {
 }
 export const languages = {
   [ELangs.en]: {
-    to_graphiql: 'GraphQL',
+    to_graphiql: 'GraphiQL',
     home: 'Home',
     signIn: 'SignIn',
     signUp: 'SignUp',
@@ -72,7 +72,7 @@ export const languages = {
     prettify: 'PRETTIFY',
   },
   [ELangs.ru]: {
-    to_graphiql: 'GraphQL',
+    to_graphiql: 'GraphiQL',
     home: 'Домой',
     signIn: 'Вход',
     signUp: 'Регистрация',
@@ -139,7 +139,7 @@ export const languages = {
     prettify: 'КРАСИВО',
   },
   [ELangs.bel]: {
-    to_graphiql: 'GraphQL',
+    to_graphiql: 'GraphiQL',
     home: 'Дадому',
     signIn: 'Уваход',
     signUp: 'Рэгістрацыя',

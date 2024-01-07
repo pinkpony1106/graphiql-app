@@ -1,8 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { updateQueryTextValue } from '../../../store/slices/queryTextSlice';
-import QueryTextEditor from '../QueryTextEditor/QueryTextEditor';
+import { updateQueryTextValue } from '../store/slices/queryTextSlice';
+import QueryTextEditor from '../Components/RequestEditor/QueryTextEditor/QueryTextEditor';
 
 const mockStore = configureMockStore();
 

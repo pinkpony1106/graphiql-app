@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import AboutCourse from '../AboutCourse';
-import { TranslateContextProvider } from '../../../Context/Context';
+import AboutCourse from '../Components/AboutCourse/AboutCourse';
+import { TranslateContextProvider } from '../Context/Context';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('AboutCourse.test', () => {

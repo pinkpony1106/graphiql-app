@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { ISchemaProps, ISchemaType } from './SchemaTypes';
 import SchemaField from './SchemaField';
-import styles from './SchemaInfo.module.css';
+import styles from './schemaInfo.module.css';
 
 interface ISchemaInfoProps extends ISchemaProps {
   selectedField: string | null;

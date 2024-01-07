@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ISchemaFieldProps } from './SchemaTypes';
 import SchemaFieldDetail from './SchemaFieldDetail';
-import styles from './SchemaInfo.module.css';
+import styles from './schemaInfo.module.css';
 
 const SchemaField: FC<ISchemaFieldProps> = ({
   fields,

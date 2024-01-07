@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './InvalidRoute.module.css';
+import styles from './invalidRoute.module.css';
 import { TranslateContext, tKeys } from '../../Context/Context';
 import { useContext } from 'react';
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ISchemaField, ISchemaType } from './SchemaTypes';
-import styles from './SchemaInfo.module.css';
+import styles from './schemaInfo.module.css';
 
 interface ISchemaFieldDetailProps {
   type: ISchemaType | null;

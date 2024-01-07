@@ -12,7 +12,7 @@ export default function HeadersEditor() {
       <pre
         className={style.headersTextArea}
         contentEditable="true"
-        suppressContentEditableWarning={true} // warning muted!
+        suppressContentEditableWarning={true}
         ref={HeadersTextDiv}
         placeholder="{ your headers }"
         onInput={() => {

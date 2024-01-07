@@ -27,10 +27,8 @@ export default function QueryTextEditor({
           [styles.wide]: isReadOnly,
         })}
         ref={requestTextDiv}
-        // placeholder={initQuery}
         readOnly={isReadOnly}
         spellCheck="false"
-        // value={isReadOnly ? response : undefined}
         value={isReadOnly ? response : initQuery}
         onInput={() => {
           requestTextDiv.current?.value

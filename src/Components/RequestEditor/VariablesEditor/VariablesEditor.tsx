@@ -12,7 +12,7 @@ export default function VariablesEditor() {
       <pre
         className={style.variablesTextArea}
         contentEditable="true"
-        suppressContentEditableWarning={true} // warning muted!
+        suppressContentEditableWarning={true}
         ref={VariablesTextDiv}
         placeholder="{ your variables }"
         onInput={() => {

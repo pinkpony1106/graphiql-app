@@ -9,6 +9,7 @@ module.exports = {
     '<rootDir>/src/Shared/validation\\.ts$',
     '<rootDir>/src/vite-env.d\\.ts$',
     '<rootDir>/src/main\\.tsx$',
+    '<rootDir>/src/Components/RequestEditor/makePretty\\.ts$',
   ],
   collectCoverage: true,
   moduleNameMapper: {

@@ -7,6 +7,8 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/src/Shared/validation\\.ts$',
+    '<rootDir>/src/vite-env.d\\.ts$',
+    '<rootDir>/src/main\\.tsx$',
   ],
   collectCoverage: true,
   moduleNameMapper: {

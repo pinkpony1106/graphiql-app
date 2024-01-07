@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateQueryTextValue } from '../../../store/slices/queryTextSlice';
 import { RootState } from '../../../store';
 
-import style from './queryTextEditor.module.css';
+import styles from './queryTextEditor.module.css';
+import classNames from 'classnames';
 
 type QueryTextEditorType = {
   isReadOnly?: boolean;
@@ -22,7 +23,9 @@ export default function QueryTextEditor({
   return (
     <>
       <textarea
-        className={style.requestTextArea}
+        className={classNames(styles.requestTextArea, {
+          [styles.wide]: isReadOnly,
+        })}
         ref={requestTextDiv}
         // placeholder={initQuery}
         readOnly={isReadOnly}

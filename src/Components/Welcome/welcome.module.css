@@ -94,3 +94,14 @@
     height: 60px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .welcomeExample {
+    padding: 10px;
+    width: 250px;
+    font-size: 14px;
+  }
+  .welcomeLogoVertical {
+    display: none;
+  }
+}

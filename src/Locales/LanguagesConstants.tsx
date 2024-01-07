@@ -140,7 +140,7 @@ export const languages = {
   },
   [ELangs.bel]: {
     to_graphiql: 'GraphQL',
-    home: 'Додому',
+    home: 'Дадому',
     signIn: 'Уваход',
     signUp: 'Рэгістрацыя',
     logOut: 'Выйсьці',

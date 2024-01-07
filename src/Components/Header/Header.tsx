@@ -92,6 +92,7 @@ function Header() {
               EN
             </div>
             <div
+              data-testid="lang"
               className={classNames({
                 [styles.langActive]: lang === ELangs.ru,
               })}

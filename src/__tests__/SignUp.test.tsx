@@ -72,7 +72,7 @@ test('validates form inputs', async () => {
 
 test('shows an alert when user tries to register with an existing email', async () => {
   jest.spyOn(firebaseModule, 'checkIfEmailExists').mockResolvedValue(true);
-  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
+  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
 
   render(
     <BrowserRouter>
@@ -82,15 +82,25 @@ test('shows an alert when user tries to register with an existing email', async 
     </BrowserRouter>
   );
 
-  fireEvent.change(screen.getByPlaceholderText('Your Name'), { target: { value: 'Tanya' } });
-  fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'kulinkovich56@gmail.com' } });
-  fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Password@123' } });
-  fireEvent.change(screen.getByPlaceholderText('Password Again'), { target: { value: 'Password@123' } });
+  fireEvent.change(screen.getByPlaceholderText('Your Name'), {
+    target: { value: 'Tanya' },
+  });
+  fireEvent.change(screen.getByPlaceholderText('Email'), {
+    target: { value: 'kulinkovich56@gmail.com' },
+  });
+  fireEvent.change(screen.getByPlaceholderText('Password'), {
+    target: { value: 'Password@123' },
+  });
+  fireEvent.change(screen.getByPlaceholderText('Password Again'), {
+    target: { value: 'Password@123' },
+  });
 
   fireEvent.click(screen.getByRole('button', { name: 'SignUp' }));
 
   await waitFor(() => {
-    expect(alertSpy).toHaveBeenCalledWith('User with this email already exists');
+    expect(alertSpy).toHaveBeenCalledWith(
+      'User with this email already exists'
+    );
   });
 
   jest.clearAllMocks();

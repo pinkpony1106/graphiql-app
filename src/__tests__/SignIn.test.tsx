@@ -98,7 +98,7 @@ describe('Authentication', () => {
 
 test('shows an alert when user tries to register with Invalid email or password', async () => {
   jest.spyOn(firebaseModule, 'checkIfEmailExists').mockResolvedValue(true);
-  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
+  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
 
   render(
     <BrowserRouter>
@@ -108,13 +108,19 @@ test('shows an alert when user tries to register with Invalid email or password'
     </BrowserRouter>
   );
 
-  fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'kulinkovich56@gmail.com' } });
-  fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Password@123' } });
+  fireEvent.change(screen.getByPlaceholderText('Email'), {
+    target: { value: 'kulinkovich56@gmail.com' },
+  });
+  fireEvent.change(screen.getByPlaceholderText('Password'), {
+    target: { value: 'Password@123' },
+  });
 
   fireEvent.click(screen.getByRole('button', { name: 'SignIn' }));
 
   await waitFor(() => {
-    expect(alertSpy).toHaveBeenCalledWith('Invalid email or password. Please try again.');
+    expect(alertSpy).toHaveBeenCalledWith(
+      'Invalid email or password. Please try again.'
+    );
   });
 
   jest.clearAllMocks();

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import style from './aboutTeam.module.css';
 import { TranslateContext, tKeys } from '../../Context/Context';
+import { Link } from 'react-router-dom';
 
 function AboutTeam() {
   const { t } = useContext(TranslateContext);
@@ -14,8 +15,15 @@ function AboutTeam() {
           <div className={style.developerInfoHeader}>{t(tKeys.tania)}</div>
           <div className={style.developerInfoText}>{t(tKeys.tania_text)}</div>
           <div className={style.linksContainer}>
-            <div className={style.link}>LinkedIn</div>
-            <div className={style.link}>GitHub</div>
+            <Link
+              to={'https://www.linkedin.com/in/tatiana-kulinkovich-892410230/'}
+              target="blank"
+            >
+              <div className={style.link}>LinkedIn</div>
+            </Link>
+            <Link to={'https://github.com/bogdanovich231'} target="blank">
+              <div className={style.link}>GitHub</div>
+            </Link>
           </div>
         </div>
       </div>
@@ -26,8 +34,15 @@ function AboutTeam() {
           <div className={style.developerInfoHeader}>{t(tKeys.anna)}</div>
           <div className={style.developerInfoText}>{t(tKeys.anna_text)}</div>
           <div className={style.linksContainer}>
-            <div className={style.link}>LinkedIn</div>
-            <div className={style.link}>GitHub</div>
+            <Link
+              to={'https://ru.linkedin.com/in/anna-dvor-20b50a153'}
+              target="blank"
+            >
+              <div className={style.link}>LinkedIn</div>
+            </Link>
+            <Link to={'https://github.com/annFromEarth'} target="blank">
+              <div className={style.link}>GitHub</div>
+            </Link>
           </div>
         </div>
       </div>
@@ -39,7 +54,9 @@ function AboutTeam() {
           <div className={style.developerInfoText}>{t(tKeys.julia_text)}</div>
           <div className={style.linksContainer}>
             <div className={style.link}>LinkedIn</div>
-            <div className={style.link}>GitHub</div>
+            <Link to={'https://github.com/pinkpony1106'} target="blank">
+              <div className={style.link}>GitHub</div>
+            </Link>
           </div>
         </div>
       </div>

@@ -21,13 +21,13 @@ export const languages = {
       'Ask for what you need, get exactly that Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less. GraphQL queries always return predictable results. Apps using GraphQL are fast and stable because they control the data they get, not the server.',
     about_team: 'About our development team',
     tania_text:
-      'Ask for what you need, get exactly that Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less. GraphQL queries always return predictable results.',
+      'Led creative design, implemented Firebase authentication, and structured GraphiQL schema. Ensured adaptive design and conducted thorough component testing. Wrote Jest tests to ensure the reliability of implemented features.',
 
     anna_text:
-      'Ask for what you need, get exactly that Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less. GraphQL queries always return predictable results.',
+      'Built the request block, customizing the Redux toolkit, and implemented the applications home page. Ensured design adaptability, conducted thorough component testing, and contributed to user experience. Wrote Jest tests for reliability and responsiveness.',
 
     julia_text:
-      'Ask for what you need, get exactly that Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less. GraphQL queries always return predictable results.',
+      'Managed routing, localization, and utilized Redux for state management. Developed a responsive design, including the header and footer. Played a key role in presenting query results, creating a responsive block. Wrote Jest tests to ensure the reliability of implemented features.',
 
     linkedIn: 'LinkedIn',
     gitHub: 'GitHub',
@@ -88,13 +88,13 @@ export const languages = {
       'Составте запрос того, что вам нужно, получите именно это. Отправьте запрос GraphQL к своему API и получите именно то, что вам нужно, ни больше, ни меньше. Запросы GraphQL всегда возвращают предсказуемые результаты. Приложения, использующие GraphQL, работают быстро и стабильно, поскольку они контролируют получаемые данные, а не сервер.',
     about_team: 'О нашей команде',
     tania_text:
-      'Составте запрос того, что вам нужно, получите именно это. Отправьте запрос GraphQL к своему API и получите именно то, что вам нужно, ни больше, ни меньше. Запросы GraphQL всегда возвращают предсказуемые результаты. Приложения, использующие GraphQL, работают быстро и стабильно, поскольку они контролируют получаемые данные, а не сервер.',
+      'Руководила креативным дизайном, реализовала аутентификацию Firebase и структурировала схему GraphiQL. Обеспечивала адаптивный дизайн и проводила тщательное тестирование компонентов. Писала Jest-тесты для обеспечения надежности реализованных функций.',
 
     anna_text:
-      'Составте запрос того, что вам нужно, получите именно это. Отправьте запрос GraphQL к своему API и получите именно то, что вам нужно, ни больше, ни меньше. Запросы GraphQL всегда возвращают предсказуемые результаты. Приложения, использующие GraphQL, работают быстро и стабильно, поскольку они контролируют получаемые данные, а не сервер.',
+      'Создала блок запросов, настроила набор инструментов Redux и реализовала домашнюю страницу приложения. Обеспечивала адаптивность дизайна, проводила тщательное тестирование компонентов и внесла вклад в улучшение пользовательского интерфейса. Писала Jest-тесты на надежность и отзывчивость.',
 
     julia_text:
-      'Составте запрос того, что вам нужно, получите именно это. Отправьте запрос GraphQL к своему API и получите именно то, что вам нужно, ни больше, ни меньше. Запросы GraphQL всегда возвращают предсказуемые результаты. Приложения, использующие GraphQL, работают быстро и стабильно, поскольку они контролируют получаемые данные, а не сервер.',
+      'Управляла маршрутизацией, локализацией и использовала Redux для управления состоянием. Разработала адаптивный дизайн, включая хедер и футер. Сыграла ключевую роль в представлении результатов запроса, создав адаптивный блок. Писала Jest-тесты для обеспечения надежности реализованных функций.',
 
     linkedIn: 'LinkedIn',
     gitHub: 'GitHub',
@@ -155,13 +155,13 @@ export const languages = {
       'Складзіце запыт таго, што вам трэба, атрымаеце менавіта гэта. Дашліце запыт GraphQL да свайго API і атрымаеце менавіта тое, што вам трэба, ні больш, ні менш. Запыты GraphQL заўсёды вяртаюць прадказальныя вынікі. Прыкладанні, якія выкарыстоўваюць GraphQL, працуюць хутка і стабільна, паколькі яны кантралююць атрымоўваныя дадзеныя, а не сервер.',
     about_team: 'Аб нашай камандзе',
     tania_text:
-      'Складзіце запыт таго, што вам трэба, атрымаеце менавіта гэта. Дашліце запыт GraphQL да свайго API і атрымаеце менавіта тое, што вам трэба, ні больш, ні менш. Запыты GraphQL заўсёды вяртаюць прадказальныя вынікі. Прыкладанні, якія выкарыстоўваюць GraphQL, працуюць хутка і стабільна, паколькі яны кантралююць атрымоўваныя дадзеныя, а не сервер.',
+      'Кіравала крэатыўным дызайнам, рэалізавала аўтэнтыфікацыю Firebase і структуравала схему GraphiQL. Забяспечвала адаптыўны дызайн і праводзіла стараннае тэсціраванне кампанентаў. Пiсала Jest-тэсты для забеспячэння надзейнасці рэалізаваных функцый.',
 
     anna_text:
-      'Складзіце запыт таго, што вам трэба, атрымаеце менавіта гэта. Дашліце запыт GraphQL да свайго API і атрымаеце менавіта тое, што вам трэба, ні больш, ні менш. Запыты GraphQL заўсёды вяртаюць прадказальныя вынікі. Прыкладанні, якія выкарыстоўваюць GraphQL, працуюць хутка і стабільна, паколькі яны кантралююць атрымоўваныя дадзеныя, а не сервер.',
+      'Стварыла блок запытаў, наладзіла набор інструментаў Redux і рэалізавала галоўную старонку дадатку. Забяспечвала адаптыўнасць дызайну, праводзіла стараннае тэсціраванне кампанентаў і занесла ўклад у паляпшэнне карыстацкага інтерфейсу. Таксама пiсала Jest-тэсты на надзейнасць і спагадлівасць.',
 
     julia_text:
-      'Складзіце запыт таго, што вам трэба, атрымаеце менавіта гэта. Дашліце запыт GraphQL да свайго API і атрымаеце менавіта тое, што вам трэба, ні больш, ні менш. Запыты GraphQL заўсёды вяртаюць прадказальныя вынікі. Прыкладанні, якія выкарыстоўваюць GraphQL, працуюць хутка і стабільна, паколькі яны кантралююць атрымоўваныя дадзеныя, а не сервер..',
+      'Кіравала маршрутызацыяй, лакалізацыяй і выкарыстоўвала Redux для кіравання станам. Распрацавала адаптыўны дызайн, уключаючы хедэр і футэр. Выканала ключавую ролю ва ўяўленні вынікаў запыту, стварыўшы адаптыўны блок. Пісала Jest-тэсты для забеспячэння надзейнасці рэалізаваных функцый.',
 
     linkedIn: 'LinkedIn',
     gitHub: 'GitHub',

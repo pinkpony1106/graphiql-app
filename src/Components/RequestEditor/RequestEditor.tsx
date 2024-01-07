@@ -57,17 +57,6 @@ export default function RequestEditor() {
       parsedHeaders = {};
     }
 
-    console.log(
-      'url:',
-      baseUrl,
-      'query:',
-      queryText,
-      'variables:',
-      parsedVariables,
-      'headers:',
-      parsedHeaders
-    );
-
     dispatchAsync(
       fetchResult({
         url: baseUrl,

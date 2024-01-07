@@ -1,13 +1,14 @@
 import { render } from '@testing-library/react';
-import RequestEditor from '../RequestEditor';
-import { TranslateContextProvider } from '../../../Context/Context';
+import RequestEditor from '../Components/RequestEditor/RequestEditor';
+import { TranslateContextProvider } from '../Context/Context';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../../../store';
+import store from '../store';
 
-jest.mock('../QueryTextEditor/QueryTextEditor.tsx', () => () => (
-  <div data-testid="query-text-editor" />
-));
+jest.mock(
+  '../Components/RequestEditor/QueryTextEditor/QueryTextEditor.tsx',
+  () => () => <div data-testid="query-text-editor" />
+);
 
 describe('AboutTeam.test', () => {
   it('should render QueryTextEditor', () => {

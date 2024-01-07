@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
-import Welcome from '../Welcome';
-import { TranslateContextProvider } from '../../../Context/Context';
+import AboutTeam from '../Components/AboutTeam/AboutTeam';
+import { TranslateContextProvider } from '../Context/Context';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('Welcome.test', () => {
+describe('AboutTeam.test', () => {
   it('should be rendered', () => {
     render(
       <BrowserRouter>
         <TranslateContextProvider>
-          <Welcome />
+          <AboutTeam />
         </TranslateContextProvider>
       </BrowserRouter>
     );
-    const title = screen.getByText('Ask for what you want');
+    const title = screen.getByText('About our development team');
     expect(title).toBeInTheDocument();
   });
 });

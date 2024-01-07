@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import AboutGraphi from '../AboutGraphl';
-import { TranslateContextProvider } from '../../../Context/Context';
+import AboutGraphi from '../Components/AboutGraphl/AboutGraphl';
+import { TranslateContextProvider } from '../Context/Context';
 
 describe('AboutGraphi.test', () => {
   it('should be rendered', () => {

@@ -59,3 +59,14 @@
 .description {
   margin-top: 20px;
 }
+
+@media screen and (max-width: 900px) {
+  .schemaInformation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .detailContainer {
+    flex-direction: column;
+  }
+}
